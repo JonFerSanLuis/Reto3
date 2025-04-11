@@ -1,0 +1,215 @@
+/* Estilos específicos para la página principal */
+.carousel-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel {
+  display: flex;
+  width: 300%;
+  height: 100%;
+  position: relative;
+  animation: slide 12s infinite ease-in-out;
+}
+
+.carousel img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+@keyframes slide {
+  0%,
+  30% {
+    transform: translateX(0);
+  }
+  33.33%,
+  63.33% {
+    transform: translateX(-33.33%);
+  }
+  66.66%,
+  96.66% {
+    transform: translateX(-66.66%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.overlay-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 40px;
+  border-radius: 10px;
+  max-width: 700px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+.Titulo_parrafo {
+  font-size: 48px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 2px;
+}
+
+.overlay-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.boton-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.boton-container button {
+  background-color: #f4a261;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.boton-container button:hover {
+  background-color: #e76f51;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos específicos para el footer de la página principal */
+.footer-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.footer-title:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: #f4a261;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all 0.3s;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: #f4a261;
+  padding-left: 5px;
+}
+
+.footer-contact p {
+  margin-bottom: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-contact i {
+  color: #f4a261;
+  width: 20px;
+  text-align: center;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-links a {
+  color: white;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: #f4a261;
+}
+
+@media (max-width: 992px) {
+  .overlay-content {
+    max-width: 600px;
+    padding: 30px;
+  }
+
+  .Titulo_parrafo {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .overlay-content {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .Titulo_parrafo {
+    font-size: 28px;
+  }
+
+  .overlay-content p {
+    font-size: 16px;
+  }
+
+  .boton-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-title:after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .footer-links {
+    padding: 0;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+}

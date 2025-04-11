@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suscribirse</title>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/pages/suscribirse.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+        </div>
+        <nav class="nav-container">
+            <ul class="nav-links">
+                <li><a href="informacion.html">Información</a></li>
+                <li><a href="ranking.html">Ranking</a></li>
+                <li><a href="comprarCupon.html">Comprar Cupones</a></li>
+            </ul>
+        </nav>
+
+        <div class="right-section">
+            <div class="idiomas">
+                <img src="img/idiomas.png" alt="Idiomas">
+                <ul class="idioma-menu">
+                    <li>Español</li>
+                    <li>English</li>
+                    <li>Euskera</li>
+                </ul>
+            </div>
+            <a href="suscribirse.html" class="btn">Suscribirse</a>
+            <a href="descargarJuego.html" class="btn">Descargar</a>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="auth-container">
+            <div class="auth-image">
+                <div class="auth-image-content">
+                    <h2 class="auth-image-title">¡Únete a nuestra comunidad!</h2>
+                    <p class="auth-image-text">Suscríbete para acceder a todas las funcionalidades del juego y formar parte de nuestra comunidad educativa.</p>
+                    <a href="#" class="btn" style="margin-top: 15px; background-color: white; color: #333;">Conoce más</a>
+                </div>
+            </div>
+            <div class="auth-forms">
+                <div class="auth-tabs">
+                    <div class="auth-tab active" onclick="switchTab('centro')">Centro Educativo</div>
+                    <div class="auth-tab" onclick="switchTab('individual')">Usuario Individual</div>
+                </div>
+
+                <div id="centro-form" class="auth-form active">
+                    <h2 class="form-title">Suscripción para Centros Educativos</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="centro-nombre">Nombre del centro</label>
+                            <input type="text" id="centro-nombre" name="nombre" placeholder="Nombre del centro educativo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="centro-responsable">Nombre del responsable</label>
+                            <input type="text" id="centro-responsable" name="responsable" placeholder="Nombre y apellidos" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="centro-email">Correo electrónico</label>
+                            <input type="email" id="centro-email" name="email" placeholder="ejemplo@centro.edu" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="centro-telefono">Teléfono de contacto</label>
+                            <input type="tel" id="centro-telefono" name="telefono" placeholder="Teléfono" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="centro-tipo">Tipo de centro</label>
+                            <select id="centro-tipo" name="tipo" required>
+                                <option value="">Seleccione una opción</option>
+                                <option value="publico">Público</option>
+                                <option value="concertado">Concertado</option>
+                                <option value="privado">Privado</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="centro-alumnos">Número aproximado de alumnos</label>
+                            <input type="number" id="centro-alumnos" name="alumnos" min="1" placeholder="Número de alumnos" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="centro-password">Contraseña</label>
+                            <input type="password" id="centro-password" name="password" placeholder="Crea una contraseña" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="centro-confirm">Confirmar contraseña</label>
+                            <input type="password" id="centro-confirm" name="confirm" placeholder="Confirma tu contraseña" required>
+                        </div>
+                        <div class="form-submit">
+                            <button type="submit">Registrar Centro</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="individual-form" class="auth-form">
+                    <h2 class="form-title">Suscripción Individual</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="individual-nombre">Nombre completo</label>
+                            <input type="text" id="individual-nombre" name="nombre" placeholder="Tu nombre y apellidos" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="individual-email">Correo electrónico</label>
+                            <input type="email" id="individual-email" name="email" placeholder="ejemplo@correo.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="individual-edad">Edad</label>
+                            <input type="number" id="individual-edad" name="edad" min="1" placeholder="Tu edad" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="individual-password">Contraseña</label>
+                            <input type="password" id="individual-password" name="password" placeholder="Crea una contraseña" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="individual-confirm">Confirmar contraseña</label>
+                            <input type="password" id="individual-confirm" name="confirm" placeholder="Confirma tu contraseña" required>
+                        </div>
+                        <div class="form-submit">
+                            <button type="submit">Registrarse</button>
+                        </div>
+                    </form>
+
+                    <div class="social-login">
+                        <div class="social-login-title">O regístrate con</div>
+                        <div class="social-buttons">
+                            <div class="social-button">F</div>
+                            <div class="social-button">G</div>
+                            <div class="social-button">T</div>
+                        </div>
+                    </div>
+
+                    <div class="switch-form">
+                        ¿Ya tienes una cuenta? <a href="#" onclick="showLogin()">Inicia sesión</a>
+                    </div>
+                </div>
+
+                <div id="login-form" class="auth-form" style="display: none;">
+                    <h2 class="form-title">Iniciar Sesión</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="login-email">Correo electrónico</label>
+                            <input type="email" id="login-email" name="email" placeholder="ejemplo@correo.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Contraseña</label>
+                            <input type="password" id="login-password" name="password" placeholder="Tu contraseña" required>
+                        </div>
+                        <div class="form-options">
+                            <div class="remember-me">
+                                <input type="checkbox" id="remember" name="remember">
+                                <label for="remember">Recordarme</label>
+                            </div>
+                            <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                        </div>
+                        <div class="form-submit">
+                            <button type="submit">Iniciar Sesión</button>
+                        </div>
+                    </form>
+
+                    <div class="social-login">
+                        <div class="social-login-title">O inicia sesión con</div>
+                        <div class="social-buttons">
+                            <div class="social-button">F</div>
+                            <div class="social-button">G</div>
+                            <div class="social-button">T</div>
+                        </div>
+                    </div>
+
+                    <div class="switch-form">
+                        ¿No tienes una cuenta? <a href="#" onclick="showRegister()">Regístrate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reemplazar el footer actual por el nuevo diseño -->
+    <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <div class="footer-logo">
+                <img src="img/logo.png" alt="Logo Educación Divertida">
+            </div>
+            <p class="footer-description">Transformamos la educación en una experiencia divertida y memorable. Nuestro método innovador garantiza el aprendizaje efectivo.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <h3 class="footer-title">Enlaces rápidos</h3>
+            <ul class="footer-links">
+                <li><a href="#">Sobre nosotros</a></li>
+                <li><a href="#">Nuestros cursos</a></li>
+                <li><a href="#">Testimonios</a></li>
+                <li><a href="#">Blog educativo</a></li>
+                <li><a href="#">Preguntas frecuentes</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3 class="footer-title">Contacto</h3>
+            <div class="footer-contact">
+                <p><i class="fas fa-map-marker-alt"></i> Calle Educación 123, Madrid, España</p>
+                <p><i class="fas fa-phone"></i> +34 912 345 678</p>
+                <p><i class="fas fa-envelope"></i> info@educaciondivertida.com</p>
+                <p><i class="fas fa-clock"></i> Lunes-Viernes: 9:00 - 18:00</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-container">
+        <div class="copyright">
+            © 2025 Educación Divertida. Todos los derechos reservados.
+        </div>
+    </div>
+</footer>
+
+    <script>
+        function switchTab(tab) {
+            // Hide all forms
+            document.getElementById('centro-form').classList.remove('active');
+            document.getElementById('individual-form').classList.remove('active');
+            document.getElementById('login-form').style.display = 'none';
+            
+            // Show selected form
+            if (tab === 'centro' || tab === 'individual') {
+                document.getElementById(tab + '-form').classList.add('active');
+            }
+            
+            // Update tabs
+            const tabs = document.querySelectorAll('.auth-tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            if (tab === 'centro') {
+                tabs[0].classList.add('active');
+            } else if (tab === 'individual') {
+                tabs[1].classList.add('active');
+            }
+        }
+
+        function showLogin() {
+            document.getElementById('centro-form').classList.remove('active');
+            document.getElementById('individual-form').classList.remove('active');
+            document.getElementById('login-form').style.display = 'block';
+            
+            const tabs = document.querySelectorAll('.auth-tab');
+            tabs.forEach(t => t.classList.remove('active'));
+        }
+
+        function showRegister() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('individual-form').classList.add('active');
+            
+            const tabs = document.querySelectorAll('.auth-tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            tabs[1].classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const idiomas = document.querySelector('.idiomas');
+            document.addEventListener('click', function(e) {
+                if (idiomas.contains(e.target)) {
+                    idiomas.classList.toggle('activo');
+                } else {
+                    idiomas.classList.remove('activo');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
