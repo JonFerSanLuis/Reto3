@@ -10,19 +10,19 @@ public class Suscriptor {
     private String tipo; // "centro" o "ordinario"
     private String password; // Para registro/login, no se almacena en la BD directamente
 
-    // Constructores
+
     public Suscriptor() {
     }
 
-    public Suscriptor(int idSuscriptor, String username, String estado, Date fechaAlta, String tipo) {
-        this.idSuscriptor = idSuscriptor;
+    public Suscriptor(String username, String estado, Date fechaAlta, String tipo, String password) {
         this.username = username;
         this.estado = estado;
         this.fechaAlta = fechaAlta;
         this.tipo = tipo;
+        this.password = password;
     }
 
-    // Getters y Setters
+
     public int getIdSuscriptor() {
         return idSuscriptor;
     }
