@@ -51,9 +51,9 @@ public class AltaSuscriptor extends HttpServlet {
 		Suscriptor suscriptor = new Suscriptor(username, estado, fecha_alta, tipo, password, correo, edad);
 		
 		if(suscriptorService.addSuscriptor(suscriptor)) {
-			response.sendRedirect("ListadoController");
+			response.sendRedirect("comprarCupon.html");
     	} else {
-    		// response.sendRedirect("fallo.jsp");
+    		
     	}
 	}
 

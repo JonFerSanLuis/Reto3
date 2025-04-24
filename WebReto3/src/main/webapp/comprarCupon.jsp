@@ -22,9 +22,9 @@
 
         <nav class="nav-container">
             <ul class="nav-links">
-                <li><a href="informacion.html">Información</a></li>
-                <li><a href="ranking.html">Ranking</a></li>
-                <li><a href="comprarCupon.html">Comprar Cupones</a></li>
+                <li><a href="informacion.jsp">Información</a></li>
+                <li><a href="ranking.jsp">Ranking</a></li>
+                <li><a href="comprarCupon.jsp">Comprar Cupones</a></li>
             </ul>
         </nav>
 
@@ -37,8 +37,8 @@
                     <li>Euskera</li>
                 </ul>
             </div>
-            <a href="suscribirse.html" class="btn">Suscribirse</a>
-            <a href="descargarJuego.html" class="btn">Descargar</a>
+            <a href="suscribirse.jsp" class="btn">Suscribirse</a>
+            <a href="descargarJuego.jsp" class="btn">Descargar</a>
         </div>
     </header>
 
