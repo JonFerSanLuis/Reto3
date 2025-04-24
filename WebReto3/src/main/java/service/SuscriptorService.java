@@ -6,7 +6,7 @@ import com.bilbaoskp.model.Suscriptor;
 public class SuscriptorService {
 	SuscriptorDAO suscriptorDao;
 	
-	public void suscriptorService() {
+	public SuscriptorService() {
 		suscriptorDao = new SuscriptorDAO();
 	}
 	

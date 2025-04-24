@@ -35,7 +35,7 @@
                     <li>Euskera</li>
                 </ul>
             </div>
-            <a href="suscribirse.html" class="btn">Suscribirse</a>
+            <a href="suscribirse.jsp" class="btn">Suscribirse</a>
             <a href="descargarJuego.html" class="btn">Descargar</a>
         </div>
     </header>

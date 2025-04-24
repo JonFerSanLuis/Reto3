@@ -40,16 +40,15 @@ public class AltaSuscriptor extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-		
 		String username = request.getParameter("username");
-		String estado = request.getParameter("estado");
-		Date fecha_alta = Date.valueOf(request.getParameter("fecha_alta"));
+		String estado = "estado";
+		Date fecha_alta = new Date(System.currentTimeMillis()); // No existe este campo en el formulario, con este codigo se insertará en el objeto la fecha actual al darle al boton de registrar
 		String tipo = request.getParameter("tipo");
 		String password = request.getParameter("password");
+		String correo = request.getParameter("correo");
+		int edad = Integer.valueOf(request.getParameter("edad"));
 		
-		Suscriptor suscriptor = new Suscriptor(username, estado, fecha_alta, tipo, password);
+		Suscriptor suscriptor = new Suscriptor(username, estado, fecha_alta, tipo, password, correo, edad);
 		
 		if(suscriptorService.addSuscriptor(suscriptor)) {
 			response.sendRedirect("ListadoController");

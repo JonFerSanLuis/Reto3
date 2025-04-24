@@ -9,17 +9,21 @@ public class Suscriptor {
     private Date fechaAlta;
     private String tipo; // "centro" o "ordinario"
     private String password; // Para registro/login, no se almacena en la BD directamente
+    private String correo;
+    private int edad;
+    
 
-
-    public Suscriptor() {
+	public Suscriptor() {
     }
 
-    public Suscriptor(String username, String estado, Date fechaAlta, String tipo, String password) {
+    public Suscriptor(String username, String estado, Date fechaAlta, String tipo, String password, String correo, int edad) {
         this.username = username;
         this.estado = estado;
         this.fechaAlta = fechaAlta;
         this.tipo = tipo;
         this.password = password;
+        this.correo = correo;
+        this.edad = edad;
     }
 
 
@@ -70,15 +74,27 @@ public class Suscriptor {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public String getCorreo() {
+		return correo;
+	}
 
-    @Override
-    public String toString() {
-        return "Suscriptor{" +
-                "idSuscriptor=" + idSuscriptor +
-                ", username='" + username + '\'' +
-                ", estado='" + estado + '\'' +
-                ", fechaAlta=" + fechaAlta +
-                ", tipo='" + tipo + '\'' +
-                '}';
-    }
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+	
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	@Override
+	public String toString() {
+		return "Suscriptor [idSuscriptor=" + idSuscriptor + ", username=" + username + ", estado=" + estado
+				+ ", fechaAlta=" + fechaAlta + ", tipo=" + tipo + ", password=" + password + ", correo=" + correo
+				+ ", edad=" + edad + "]";
+	}
 }

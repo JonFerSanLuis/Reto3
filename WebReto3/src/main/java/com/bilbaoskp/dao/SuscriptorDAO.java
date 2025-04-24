@@ -16,7 +16,7 @@ public class SuscriptorDAO {
 		Connection con = AccesoBD.getConnection();
 		PreparedStatement ps = null;
 		
-		String sql = "INSERT INTO task (username, estado, fecha_alta, tipo, password) VALUES (?, ?, ?, ?, ?);";
+		String sql = "INSERT INTO suscriptores (username, estado, fecha_alta, tipo, password, correo, edad) VALUES (?, ?, ?, ?, ?, ?, ?);";
 		
 		try {
 			ps = con.prepareStatement(sql);
@@ -26,6 +26,8 @@ public class SuscriptorDAO {
 			ps.setDate(3, new java.sql.Date(suscriptor.getFechaAlta().getTime()));
 			ps.setString(4, suscriptor.getTipo());
 			ps.setString(5, suscriptor.getPassword());
+			ps.setString(6, suscriptor.getCorreo());
+			ps.setInt(7, suscriptor.getEdad());
 			
 			if (ps.executeUpdate() > 0) {
 				return true;

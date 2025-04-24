@@ -59,6 +59,7 @@
                 <div id="centro-form" class="auth-form active">
                     <h2 class="form-title">Suscripción para Centros Educativos</h2>
                     <form>
+                    	<input type="hidden" name="tipo" value="centro">
                         <div class="form-group">
                             <label for="centro-nombre">Nombre del centro</label>
                             <input type="text" id="centro-nombre" name="nombre" placeholder="Nombre del centro educativo" required>
@@ -104,14 +105,15 @@
 
                 <div id="individual-form" class="auth-form">
                     <h2 class="form-title">Suscripción Individual</h2>
-                    <form>
+                    <form action="AltaSuscriptor" method="post">
+                    	<input type="hidden" name="tipo" value="ordinario">
                         <div class="form-group">
                             <label for="individual-nombre">Nombre completo</label>
-                            <input type="text" id="individual-nombre" name="nombre" placeholder="Tu nombre y apellidos" required>
+                            <input type="text" id="individual-nombre" name="username" placeholder="Tu nombre y apellidos" required>
                         </div>
                         <div class="form-group">
                             <label for="individual-email">Correo electrónico</label>
-                            <input type="email" id="individual-email" name="email" placeholder="ejemplo@correo.com" required>
+                            <input type="email" id="individual-email" name="correo" placeholder="ejemplo@correo.com" required>
                         </div>
                         <div class="form-group">
                             <label for="individual-edad">Edad</label>
