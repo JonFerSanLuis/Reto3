@@ -1,9 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<c:set var="idioma" value="${not empty sessionScope.idioma ? sessionScope.idioma : 'es'}" scope="session" />
+<fmt:setLocale value="${idioma}" />
+<fmt:setBundle basename="resources.messages" />
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="${idioma}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Descargar Juego</title>
+    <title><fmt:message key="descargar.titulo" /></title>
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -24,9 +32,9 @@
 
         <nav class="nav-container">
             <ul class="nav-links">
-                <li><a href="informacion.jsp">Información</a></li>
-                <li><a href="ranking.jsp">Ranking</a></li>
-                <li><a href="comprarCupon.jsp">Comprar Cupones</a></li>
+                <li><a href="informacion.jsp"><fmt:message key="menu.informacion" /></a></li>
+                <li><a href="ranking.jsp"><fmt:message key="menu.ranking" /></a></li>
+                <li><a href="comprarCupon.jsp"><fmt:message key="menu.comprarCupon" /></a></li>
             </ul>
         </nav>
 
@@ -34,21 +42,20 @@
             <div class="idiomas">
                 <img src="img/idiomas.png" alt="Idiomas">
                 <ul class="idioma-menu">
-                    <li>Español</li>
-                    <li>English</li>
-                    <li>Euskera</li>
+                    <li><a href="CambiarIdioma?idioma=es"><fmt:message key="idioma.espanol" /></a></li>
+                    <li><a href="CambiarIdioma?idioma=en"><fmt:message key="idioma.ingles" /></a></li>
+                    <li><a href="CambiarIdioma?idioma=eu"><fmt:message key="idioma.euskera" /></a></li>
                 </ul>
             </div>
-            <a href="suscribirse.jsp" class="btn">Suscribirse</a>
-            <a href="descargarJuego.jsp" class="btn">Descargar</a>
+            <a href="suscribirse.jsp" class="btn"><fmt:message key="menu.suscribirse" /></a>
+            <a href="descargarJuego.jsp" class="btn"><fmt:message key="menu.descargar" /></a>
         </div>
     </header>
 
     <div class="container download-container">
         <div class="download-header">
-            <h1 class="download-title">Descargar juego</h1>
-            <p class="download-subtitle">Descarga la última versión de nuestro juego y comienza tu aventura ahora mismo.
-            </p>
+            <h1 class="download-title"><fmt:message key="descargar.titulo" /></h1>
+            <p class="download-subtitle"><fmt:message key="descargar.subtitulo" /></p>
         </div>
 
         <div class="download-content">
@@ -59,7 +66,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                         </svg>
-                        Opciones de descarga
+                        <fmt:message key="descargar.opcionesDescarga" />
                     </div>
 
                     <div class="download-option">
@@ -75,11 +82,11 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
                         </svg>
-                        Requisitos del sistema
+                        <fmt:message key="descargar.requisitos" />
                     </div>
 
                     <div class="requirements-list">
-                        <h4>Requisitos mínimos</h4>
+                        <h4><fmt:message key="descargar.requisitosMinimos" /></h4>
                         <ul>
                             <li>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -87,7 +94,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M5 13l4 4L19 7" />
                                 </svg>
-                                <span class="spec-name">Sistema:</span> Windows 7/8/10
+                                <span class="spec-name"><fmt:message key="descargar.sistema" />:</span> Windows 7/8/10
                             </li>
                             <li>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -95,7 +102,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M5 13l4 4L19 7" />
                                 </svg>
-                                <span class="spec-name">Procesador:</span> Intel Core i3 o equivalente
+                                <span class="spec-name"><fmt:message key="descargar.procesador" />:</span> Intel Core i3 o equivalente
                             </li>
                             <li>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -103,7 +110,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M5 13l4 4L19 7" />
                                 </svg>
-                                <span class="spec-name">Memoria:</span> 4 GB RAM
+                                <span class="spec-name"><fmt:message key="descargar.memoria" />:</span> 4 GB RAM
                             </li>
                             <li>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -111,7 +118,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M5 13l4 4L19 7" />
                                 </svg>
-                                <span class="spec-name">Gráficos:</span> Tarjeta gráfica compatible con DirectX 11
+                                <span class="spec-name"><fmt:message key="descargar.graficos" />:</span> Tarjeta gráfica compatible con DirectX 11
                             </li>
                             <li>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -119,7 +126,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M5 13l4 4L19 7" />
                                 </svg>
-                                <span class="spec-name">Almacenamiento:</span> 2 GB de espacio disponible
+                                <span class="spec-name"><fmt:message key="descargar.almacenamiento" />:</span> 2 GB de espacio disponible
                             </li>
                             <li>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -127,7 +134,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M5 13l4 4L19 7" />
                                 </svg>
-                                <span class="spec-name">Java:</span> Java Runtime Environment 8 o superior
+                                <span class="spec-name"><fmt:message key="descargar.java" />:</span> Java Runtime Environment 8 o superior
                             </li>
                         </ul>
                     </div>
@@ -142,8 +149,8 @@
                                 </svg>
                             </div>
                             <div class="feature-content">
-                                <h4>Instalación segura</h4>
-                                <p>Todos nuestros archivos son verificados y libres de malware.</p>
+                                <h4><fmt:message key="descargar.instalacionSegura" /></h4>
+                                <p><fmt:message key="descargar.instalacionSeguraDesc" /></p>
                             </div>
                         </div>
 
@@ -156,8 +163,8 @@
                                 </svg>
                             </div>
                             <div class="feature-content">
-                                <h4>Actualizaciones automáticas</h4>
-                                <p>El juego se actualiza automáticamente a la última versión.</p>
+                                <h4><fmt:message key="descargar.actualizaciones" /></h4>
+                                <p><fmt:message key="descargar.actualizacionesDesc" /></p>
                             </div>
                         </div>
                     </div>
@@ -181,8 +188,8 @@
                             allowfullscreen>
                         </iframe>
 
-                        <h3 class="video-title">Vista previa del juego</h3>
-                        <p class="video-description">Mira un pequeño clip del juego para ver lo que te espera</p>
+                        <h3 class="video-title"><fmt:message key="descargar.vistaPrevia" /></h3>
+                        <p class="video-description"><fmt:message key="descargar.vistaDescripcion" /></p>
                     </div>
                 </div>
             </div>
@@ -190,48 +197,48 @@
     </div>
 
     <footer class="footer">
-    <div class="footer-container">
-        <div class="footer-section">
-            <div class="footer-logo">
-                <img src="img/logo.png" alt="Logo Educación Divertida">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="img/logo.png" alt="Logo Educación Divertida">
+                </div>
+                <p class="footer-description"><fmt:message key="footer.descripcion" /></p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
-            <p class="footer-description">Transformamos la educación en una experiencia divertida y memorable. Nuestro método innovador garantiza el aprendizaje efectivo.</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
+
+            <div class="footer-section">
+                <h3 class="footer-title"><fmt:message key="footer.enlacesRapidos" /></h3>
+                <ul class="footer-links">
+                    <li><a href="#"><fmt:message key="footer.sobreNosotros" /></a></li>
+                    <li><a href="#"><fmt:message key="footer.nuestrosCursos" /></a></li>
+                    <li><a href="#"><fmt:message key="footer.testimonios" /></a></li>
+                    <li><a href="#"><fmt:message key="footer.blogEducativo" /></a></li>
+                    <li><a href="#"><fmt:message key="footer.preguntasFrecuentes" /></a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title"><fmt:message key="footer.contacto" /></h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> <fmt:message key="footer.direccion" /></p>
+                    <p><i class="fas fa-phone"></i> <fmt:message key="footer.telefono" /></p>
+                    <p><i class="fas fa-envelope"></i> <fmt:message key="footer.email" /></p>
+                    <p><i class="fas fa-clock"></i> <fmt:message key="footer.horario" /></p>
+                </div>
             </div>
         </div>
 
-        <div class="footer-section">
-            <h3 class="footer-title">Enlaces rápidos</h3>
-            <ul class="footer-links">
-                <li><a href="#">Sobre nosotros</a></li>
-                <li><a href="#">Nuestros cursos</a></li>
-                <li><a href="#">Testimonios</a></li>
-                <li><a href="#">Blog educativo</a></li>
-                <li><a href="#">Preguntas frecuentes</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-section">
-            <h3 class="footer-title">Contacto</h3>
-            <div class="footer-contact">
-                <p><i class="fas fa-map-marker-alt"></i> Calle Educación 123, Madrid, España</p>
-                <p><i class="fas fa-phone"></i> +34 912 345 678</p>
-                <p><i class="fas fa-envelope"></i> info@educaciondivertida.com</p>
-                <p><i class="fas fa-clock"></i> Lunes-Viernes: 9:00 - 18:00</p>
+        <div class="footer-container">
+            <div class="copyright">
+                <fmt:message key="footer.copyright" />
             </div>
         </div>
-    </div>
-
-    <div class="footer-container">
-        <div class="copyright">
-            © 2025 Educación Divertida. Todos los derechos reservados.
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

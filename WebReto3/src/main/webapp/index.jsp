@@ -1,5 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<c:set var="idioma" value="${not empty sessionScope.idioma ? sessionScope.idioma : 'es'}" scope="session" />
+<fmt:setLocale value="${idioma}" />
+<fmt:setBundle basename="resources.messages" />
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="${idioma}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,14 +23,14 @@
 <body>
     <header class="header">
         <div class="logo">
-            <a href="paginaPrincipal.html"><img src="img/logo.png" alt="Logo Educación Divertida"></a>
+            <a href="index.jsp"><img src="img/logo.png" alt="Logo Educación Divertida"></a>
         </div>
 
         <nav class="nav-container">
             <ul class="nav-links">
-                <li><a href="informacion.jsp">Información</a></li>
-                <li><a href="ranking.jsp">Ranking</a></li>
-                <li><a href="comprarCupon.jsp">Comprar Cupones</a></li>
+                <li><a href="informacion.jsp"><fmt:message key="menu.informacion" /></a></li>
+                <li><a href="ranking.jsp"><fmt:message key="menu.ranking" /></a></li>
+                <li><a href="comprarCupon.jsp"><fmt:message key="menu.comprarCupon" /></a></li>
             </ul>
         </nav>
 
@@ -30,13 +38,13 @@
             <div class="idiomas">
                 <img src="img/idiomas.png" alt="Idioma" class="icono-idioma">
                 <ul class="idioma-menu">
-                    <li>Español</li>
-                    <li>English</li>
-                    <li>Euskera</li>
+                    <li><a href="CambiarIdioma?idioma=es"><fmt:message key="idioma.espanol" /></a></li>
+                    <li><a href="CambiarIdioma?idioma=en"><fmt:message key="idioma.ingles" /></a></li>
+                    <li><a href="CambiarIdioma?idioma=eu"><fmt:message key="idioma.euskera" /></a></li>
                 </ul>
             </div>
-            <a href="suscribirse.jsp" class="btn">Suscribirse</a>
-            <a href="descargarJuego.jsp" class="btn">Descargar</a>
+            <a href="suscribirse.jsp" class="btn"><fmt:message key="menu.suscribirse" /></a>
+            <a href="descargarJuego.jsp" class="btn"><fmt:message key="menu.descargar" /></a>
         </div>
     </header>
 
@@ -47,13 +55,11 @@
             <img src="img/pixelcut-export (2).jpeg" alt="Actividades educativas">
         </div>
         <div class="overlay-content">
-            <h1 class="Titulo_parrafo">Descubre las pistas. Libera tu voz. Escapa del silencio.</h1>
-            <p>Sumérgete en una aventura donde cada acertijo te acerca a la verdad. Ayuda a un niño a salir de su mundo
-                de bullying resolviendo claves, abriendo cajas fuertes y escapando del encierro. ¿Podrás encontrar la
-                salida antes de que sea tarde?</p>
+            <h1 class="Titulo_parrafo"><fmt:message key="index.titulo" /></h1>
+            <p><fmt:message key="index.descripcion" /></p>
             <div class="boton-container">
-                <button>Aprende más</button>
-                <button>Disfruta en vivo</button>
+                <button><fmt:message key="index.aprendeMas" /></button>
+                <button><fmt:message key="index.disfrutaEnVivo" /></button>
             </div>
         </div>
     </div>
@@ -64,8 +70,7 @@
                 <div class="footer-logo">
                     <img src="img/logo.png" alt="Logo Educación Divertida">
                 </div>
-                <p class="footer-description">Transformamos la educación en una experiencia divertida y memorable.
-                    Nuestro método innovador garantiza el aprendizaje efectivo.</p>
+                <p class="footer-description"><fmt:message key="footer.descripcion" /></p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
@@ -75,30 +80,33 @@
             </div>
 
             <div class="footer-section">
-                <h3 class="footer-title">Enlaces rápidos</h3>
+                <h3 class="footer-title"><fmt:message key="footer.enlacesRapidos" /></h3>
                 <ul class="footer-links">
-                    <li><a href="#">Sobre nosotros</a></li>
-                    <li><a href="#">Nuestros cursos</a></li>
-                    <li><a href="#">Testimonios</a></li>
-                    <li><a href="#">Blog educativo</a></li>
-                    <li><a href="#">Preguntas frecuentes</a></li>
+                    <li><a href="#"><fmt:message key="footer.sobreNosotros" /></a></li>
+                    <li><a href="#"><fmt:message key="footer.nuestrosCursos" /></a></li>
+                    <li><a href="#"><fmt:message key="footer.testimonios" /></a></li>
+                    <li><a href="#"><fmt:message key="footer.blogEducativo" /></a></li>
+                    <li><a href="#"><fmt:message key="footer.preguntasFrecuentes" /></a></li>
                 </ul>
             </div>
 
             <div class="footer-section">
-                <h3 class="footer-title">Contacto</h3>
+                <h3 class="footer-title"><fmt:message key="footer.contacto" /></h3>
                 <div class="footer-contact">
-                    <p><i class="fas fa-map-marker-alt"></i> Calle Educación 123, Madrid, España</p>
-                    <p><i class="fas fa-phone"></i> +34 912 345 678</p>
-                    <p><i class="fas fa-envelope"></i> info@educaciondivertida.com</p>
-                    <p><i class="fas fa-clock"></i> Lunes-Viernes: 9:00 - 18:00</p>
+                    <p><i class="fas fa-map-marker-alt"></i> <fmt:message key="footer.direccion" /></p>
+                    <p><i class="fas fa-phone"></i> <fmt:message key="footer.telefono" /></p>
+                    <p><i class="fas fa-envelope"></i> <fmt:message key="footer.email" /></p>
+                    <p><i class="fas fa-clock"></i> <fmt:message key="footer.horario" /></p>
+                </div>
+            </div>
+          <fmt:message key="footer.horario" /></p>
                 </div>
             </div>
         </div>
 
         <div class="footer-container">
             <div class="copyright">
-                © 2025 Educación Divertida. Todos los derechos reservados.
+                <fmt:message key="footer.copyright" />
             </div>
         </div>
     </footer>

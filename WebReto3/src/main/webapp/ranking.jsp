@@ -1,9 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<c:set var="idioma" value="${not empty sessionScope.idioma ? sessionScope.idioma : 'es'}" scope="session" />
+<fmt:setLocale value="${idioma}" />
+<fmt:setBundle basename="resources.messages" />
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="${idioma}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ranking</title>
+    <title><fmt:message key="ranking.titulo" /></title>
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -13,8 +21,6 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/pages/ranking.css">
-    <!-- Asegurarse de que se incluya Font Awesome para los iconos -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
 </head>
 <body>
     <header class="header">
@@ -23,9 +29,9 @@
         </div>
         <nav class="nav-container">
             <ul class="nav-links">
-                <li><a href="informacion.jsp">Información</a></li>
-                <li><a href="ranking.jsp">Ranking</a></li>
-                <li><a href="comprarCupon.jsp">Comprar Cupones</a></li>
+                <li><a href="informacion.jsp"><fmt:message key="menu.informacion" /></a></li>
+                <li><a href="ranking.jsp"><fmt:message key="menu.ranking" /></a></li>
+                <li><a href="comprarCupon.jsp"><fmt:message key="menu.comprarCupon" /></a></li>
             </ul>
         </nav>
 
@@ -33,38 +39,38 @@
             <div class="idiomas">
                 <img src="img/idiomas.png" alt="Idiomas">
                 <ul class="idioma-menu">
-                    <li>Español</li>
-                    <li>English</li>
-                    <li>Euskera</li>
+                    <li><a href="CambiarIdioma?idioma=es"><fmt:message key="idioma.espanol" /></a></li>
+                    <li><a href="CambiarIdioma?idioma=en"><fmt:message key="idioma.ingles" /></a></li>
+                    <li><a href="CambiarIdioma?idioma=eu"><fmt:message key="idioma.euskera" /></a></li>
                 </ul>
             </div>
-            <a href="suscribirse.jsp" class="btn">Suscribirse</a>
-            <a href="descargarJuego.jsp" class="btn">Descargar</a>
+            <a href="suscribirse.jsp" class="btn"><fmt:message key="menu.suscribirse" /></a>
+            <a href="descargarJuego.jsp" class="btn"><fmt:message key="menu.descargar" /></a>
         </div>
     </header>
 
     <div class="main-content">
-        <h1 class="page-title">Ranking de Jugadores</h1>
+        <h1 class="page-title"><fmt:message key="ranking.titulo" /></h1>
 
         <div class="ranking-container">
             <section class="search-section">
-                <h2 class="search-title">Buscar Jugador</h2>
+                <h2 class="search-title"><fmt:message key="ranking.buscarJugador" /></h2>
                 <form class="search-form">
                     <input type="text" class="search-input" placeholder="Nombre de usuario o ID">
-                    <button type="submit" class="search-button">Buscar</button>
+                    <button type="submit" class="search-button"><fmt:message key="ranking.buscar" /></button>
                 </form>
             </section>
 
             <section class="ranking-table-section">
-                <h2 class="ranking-table-title">Top Jugadores</h2>
+                <h2 class="ranking-table-title"><fmt:message key="ranking.topJugadores" /></h2>
                 <table class="ranking-table">
                     <thead>
                         <tr>
-                            <th>Posición</th>
-                            <th>Jugador</th>
-                            <th>Puntuación</th>
-                            <th>Nivel</th>
-                            <th>Partidas</th>
+                            <th><fmt:message key="ranking.posicion" /></th>
+                            <th><fmt:message key="ranking.jugador" /></th>
+                            <th><fmt:message key="ranking.puntuacion" /></th>
+                            <th><fmt:message key="ranking.nivel" /></th>
+                            <th><fmt:message key="ranking.partidas" /></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -192,13 +198,13 @@
                 </table>
 
                 <div class="pagination">
-                    <button class="pagination-button">Anterior</button>
+                    <button class="pagination-button"><fmt:message key="ranking.anterior" /></button>
                     <button class="pagination-button active">1</button>
                     <button class="pagination-button">2</button>
                     <button class="pagination-button">3</button>
                     <button class="pagination-button">4</button>
                     <button class="pagination-button">5</button>
-                    <button class="pagination-button">Siguiente</button>
+                    <button class="pagination-button"><fmt:message key="ranking.siguiente" /></button>
                 </div>
             </section>
         </div>
@@ -211,7 +217,7 @@
                 <div class="footer-logo">
                     <img src="img/logo.png" alt="Logo Educación Divertida">
                 </div>
-                <p class="footer-description">Transformamos la educación en una experiencia divertida y memorable. Nuestro método innovador garantiza el aprendizaje efectivo.</p>
+                <p class="footer-description"><fmt:message key="footer.descripcion" /></p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
@@ -221,30 +227,30 @@
             </div>
 
             <div class="footer-section">
-                <h3 class="footer-title">Enlaces rápidos</h3>
+                <h3 class="footer-title"><fmt:message key="footer.enlacesRapidos" /></h3>
                 <ul class="footer-links">
-                    <li><a href="#">Sobre nosotros</a></li>
-                    <li><a href="#">Nuestros cursos</a></li>
-                    <li><a href="#">Testimonios</a></li>
-                    <li><a href="#">Blog educativo</a></li>
-                    <li><a href="#">Preguntas frecuentes</a></li>
+                    <li><a href="#"><fmt:message key="footer.sobreNosotros" /></a></li>
+                    <li><a href="#"><fmt:message key="footer.nuestrosCursos" /></a></li>
+                    <li><a href="#"><fmt:message key="footer.testimonios" /></a></li>
+                    <li><a href="#"><fmt:message key="footer.blogEducativo" /></a></li>
+                    <li><a href="#"><fmt:message key="footer.preguntasFrecuentes" /></a></li>
                 </ul>
             </div>
 
             <div class="footer-section">
-                <h3 class="footer-title">Contacto</h3>
+                <h3 class="footer-title"><fmt:message key="footer.contacto" /></h3>
                 <div class="footer-contact">
-                    <p><i class="fas fa-map-marker-alt"></i> Calle Educación 123, Madrid, España</p>
-                    <p><i class="fas fa-phone"></i> +34 912 345 678</p>
-                    <p><i class="fas fa-envelope"></i> info@educaciondivertida.com</p>
-                    <p><i class="fas fa-clock"></i> Lunes-Viernes: 9:00 - 18:00</p>
+                    <p><i class="fas fa-map-marker-alt"></i> <fmt:message key="footer.direccion" /></p>
+                    <p><i class="fas fa-phone"></i> <fmt:message key="footer.telefono" /></p>
+                    <p><i class="fas fa-envelope"></i> <fmt:message key="footer.email" /></p>
+                    <p><i class="fas fa-clock"></i> <fmt:message key="footer.horario" /></p>
                 </div>
             </div>
         </div>
 
         <div class="footer-container">
             <div class="copyright">
-                © 2025 Educación Divertida. Todos los derechos reservados.
+                <fmt:message key="footer.copyright" />
             </div>
         </div>
     </footer>

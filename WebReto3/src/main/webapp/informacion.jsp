@@ -1,9 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<c:set var="idioma" value="${not empty sessionScope.idioma ? sessionScope.idioma : 'es'}" scope="session" />
+<fmt:setLocale value="${idioma}" />
+<fmt:setBundle basename="resources.messages" />
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="${idioma}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Información</title>
+    <title><fmt:message key="info.titulo" /></title>
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -24,9 +32,9 @@
 
         <nav class="nav-container">
             <ul class="nav-links">
-                <li><a href="informacion.jsp">Información</a></li>
-                <li><a href="ranking.jsp">Ranking</a></li>
-                <li><a href="comprarCupon.jsp">Comprar Cupones</a></li>
+                <li><a href="informacion.jsp"><fmt:message key="menu.informacion" /></a></li>
+                <li><a href="ranking.jsp"><fmt:message key="menu.ranking" /></a></li>
+                <li><a href="comprarCupon.jsp"><fmt:message key="menu.comprarCupon" /></a></li>
             </ul>
         </nav>
 
@@ -34,18 +42,18 @@
             <div class="idiomas">
                 <img src="img/idiomas.png" alt="Idiomas">
                 <ul class="idioma-menu">
-                    <li>Español</li>
-                    <li>English</li>
-                    <li>Euskera</li>
+                    <li><a href="CambiarIdioma?idioma=es"><fmt:message key="idioma.espanol" /></a></li>
+                    <li><a href="CambiarIdioma?idioma=en"><fmt:message key="idioma.ingles" /></a></li>
+                    <li><a href="CambiarIdioma?idioma=eu"><fmt:message key="idioma.euskera" /></a></li>
                 </ul>
             </div>
-            <a href="suscribirse.jsp" class="btn">Suscribirse</a>
-            <a href="descargarJuego.jsp" class="btn">Descargar</a>
+            <a href="suscribirse.jsp" class="btn"><fmt:message key="menu.suscribirse" /></a>
+            <a href="descargarJuego.jsp" class="btn"><fmt:message key="menu.descargar" /></a>
         </div>
     </header>
 
     <div class="main-content">
-        <h1 class="page-title">Información</h1>
+        <h1 class="page-title"><fmt:message key="info.titulo" /></h1>
 
         <div class="info-container">
             <section class="about-section">
@@ -53,45 +61,45 @@
                     <img src="/placeholder.svg?height=400&width=600" alt="Sobre nosotros">
                 </div>
                 <div class="about-content">
-                    <h2 class="section-title">Sobre Nosotros</h2>
-                    <p>Somos un equipo apasionado por los juegos y la tecnología, dedicados a crear experiencias interactivas que combinan diversión y aprendizaje. Nuestro proyecto nació de la colaboración entre el Centro San Luis y Bilbao SKP, con el objetivo de desarrollar juegos educativos que fomenten el conocimiento y la competencia sana.</p>
-                    <p>Desde nuestros inicios en 2023, hemos trabajado para crear una plataforma que permita a los usuarios explorar, aprender y competir en un entorno virtual seguro y divertido. Nuestro equipo está formado por desarrolladores, diseñadores y educadores comprometidos con la calidad y la innovación.</p>
-                    <p>Creemos en el poder de los juegos como herramienta educativa y de desarrollo personal. Por eso, nuestro objetivo es seguir creciendo y mejorando para ofrecer la mejor experiencia posible a nuestros usuarios.</p>
+                    <h2 class="section-title"><fmt:message key="info.sobreNosotros" /></h2>
+                    <p><fmt:message key="info.sobreNosotrosTexto1" /></p>
+                    <p><fmt:message key="info.sobreNosotrosTexto2" /></p>
+                    <p><fmt:message key="info.sobreNosotrosTexto3" /></p>
                 </div>
             </section>
 
             <section class="features-section">
-                <h2 class="section-title">Características del Juego</h2>
+                <h2 class="section-title"><fmt:message key="info.caracteristicas" /></h2>
                 <div class="features-grid">
                     <div class="feature-card">
-                        <h3 class="feature-title">Mapa Interactivo</h3>
-                        <p class="feature-description">Explora diferentes ubicaciones en un mapa interactivo basado en lugares reales. Descubre puntos de interés y completa misiones en cada ubicación.</p>
+                        <h3 class="feature-title"><fmt:message key="info.mapaInteractivo" /></h3>
+                        <p class="feature-description"><fmt:message key="info.mapaInteractivoDesc" /></p>
                     </div>
                     <div class="feature-card">
-                        <h3 class="feature-title">Sistema de Ranking</h3>
-                        <p class="feature-description">Compite con otros jugadores y sube en el ranking. Gana puntos por completar misiones y desafíos diarios.</p>
+                        <h3 class="feature-title"><fmt:message key="info.sistemaRanking" /></h3>
+                        <p class="feature-description"><fmt:message key="info.sistemaRankingDesc" /></p>
                     </div>
                     <div class="feature-card">
-                        <h3 class="feature-title">Cupones y Recompensas</h3>
-                        <p class="feature-description">Adquiere cupones para obtener intentos adicionales y desbloquear contenido exclusivo. Gana recompensas por tus logros en el juego.</p>
+                        <h3 class="feature-title"><fmt:message key="info.cupones" /></h3>
+                        <p class="feature-description"><fmt:message key="info.cuponesDesc" /></p>
                     </div>
                     <div class="feature-card">
-                        <h3 class="feature-title">Multijugador</h3>
-                        <p class="feature-description">Juega con amigos y compite en tiempo real. Forma equipos y participa en eventos especiales con otros jugadores.</p>
+                        <h3 class="feature-title"><fmt:message key="info.multijugador" /></h3>
+                        <p class="feature-description"><fmt:message key="info.multijugadorDesc" /></p>
                     </div>
                     <div class="feature-card">
-                        <h3 class="feature-title">Contenido Educativo</h3>
-                        <p class="feature-description">Aprende mientras juegas con contenido educativo integrado en las misiones y desafíos. Desarrolla habilidades y conocimientos de forma divertida.</p>
+                        <h3 class="feature-title"><fmt:message key="info.contenidoEducativo" /></h3>
+                        <p class="feature-description"><fmt:message key="info.contenidoEducativoDesc" /></p>
                     </div>
                     <div class="feature-card">
-                        <h3 class="feature-title">Actualizaciones Regulares</h3>
-                        <p class="feature-description">Disfruta de nuevas misiones, ubicaciones y características con nuestras actualizaciones regulares. Mantente al día con las novedades del juego.</p>
+                        <h3 class="feature-title"><fmt:message key="info.actualizaciones" /></h3>
+                        <p class="feature-description"><fmt:message key="info.actualizacionesDesc" /></p>
                     </div>
                 </div>
             </section>
 
             <section class="team-section">
-                <h2 class="section-title">Nuestro Equipo</h2>
+                <h2 class="section-title"><fmt:message key="info.equipo" /></h2>
                 <div class="team-grid">
                     <div class="team-card">
                         <div class="team-image">
@@ -129,26 +137,26 @@
             </section>
 
             <section class="contact-section">
-                <h2 class="section-title">Contacto</h2>
+                <h2 class="section-title"><fmt:message key="info.contacto" /></h2>
                 <form class="contact-form">
                     <div class="form-group">
-                        <label for="nombre">Nombre</label>
+                        <label for="nombre"><fmt:message key="info.nombre" /></label>
                         <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Correo electrónico</label>
+                        <label for="email"><fmt:message key="info.email" /></label>
                         <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
                     </div>
                     <div class="form-group">
-                        <label for="asunto">Asunto</label>
+                        <label for="asunto"><fmt:message key="info.asunto" /></label>
                         <input type="text" id="asunto" name="asunto" placeholder="Asunto del mensaje" required>
                     </div>
                     <div class="form-group">
-                        <label for="mensaje">Mensaje</label>
+                        <label for="mensaje"><fmt:message key="info.mensaje" /></label>
                         <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
                     </div>
                     <div class="form-submit">
-                        <button type="submit">Enviar Mensaje</button>
+                        <button type="submit"><fmt:message key="info.enviar" /></button>
                     </div>
                 </form>
             </section>
@@ -162,7 +170,7 @@
                 <div class="footer-logo">
                     <img src="img/logo.png" alt="Logo Educación Divertida">
                 </div>
-                <p class="footer-description">Transformamos la educación en una experiencia divertida y memorable. Nuestro método innovador garantiza el aprendizaje efectivo.</p>
+                <p class="footer-description"><fmt:message key="footer.descripcion" /></p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
@@ -172,30 +180,30 @@
             </div>
 
             <div class="footer-section">
-                <h3 class="footer-title">Enlaces rápidos</h3>
+                <h3 class="footer-title"><fmt:message key="footer.enlacesRapidos" /></h3>
                 <ul class="footer-links">
-                    <li><a href="#">Sobre nosotros</a></li>
-                    <li><a href="#">Nuestros cursos</a></li>
-                    <li><a href="#">Testimonios</a></li>
-                    <li><a href="#">Blog educativo</a></li>
-                    <li><a href="#">Preguntas frecuentes</a></li>
+                    <li><a href="#"><fmt:message key="footer.sobreNosotros" /></a></li>
+                    <li><a href="#"><fmt:message key="footer.nuestrosCursos" /></a></li>
+                    <li><a href="#"><fmt:message key="footer.testimonios" /></a></li>
+                    <li><a href="#"><fmt:message key="footer.blogEducativo" /></a></li>
+                    <li><a href="#"><fmt:message key="footer.preguntasFrecuentes" /></a></li>
                 </ul>
             </div>
 
             <div class="footer-section">
-                <h3 class="footer-title">Contacto</h3>
+                <h3 class="footer-title"><fmt:message key="footer.contacto" /></h3>
                 <div class="footer-contact">
-                    <p><i class="fas fa-map-marker-alt"></i> Calle Educación 123, Madrid, España</p>
-                    <p><i class="fas fa-phone"></i> +34 912 345 678</p>
-                    <p><i class="fas fa-envelope"></i> info@educaciondivertida.com</p>
-                    <p><i class="fas fa-clock"></i> Lunes-Viernes: 9:00 - 18:00</p>
+                    <p><i class="fas fa-map-marker-alt"></i> <fmt:message key="footer.direccion" /></p>
+                    <p><i class="fas fa-phone"></i> <fmt:message key="footer.telefono" /></p>
+                    <p><i class="fas fa-envelope"></i> <fmt:message key="footer.email" /></p>
+                    <p><i class="fas fa-clock"></i> <fmt:message key="footer.horario" /></p>
                 </div>
             </div>
         </div>
 
         <div class="footer-container">
             <div class="copyright">
-                © 2025 Educación Divertida. Todos los derechos reservados.
+                <fmt:message key="footer.copyright" />
             </div>
         </div>
     </footer>
