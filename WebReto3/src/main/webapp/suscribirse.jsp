@@ -66,7 +66,7 @@
 
                 <div id="centro-form" class="auth-form active">
                     <h2 class="form-title"><fmt:message key="suscribirse.suscripcionCentros" /></h2>
-                    <form>
+                    <form action="AltaSuscriptor" method="post">
                     	<input type="hidden" name="tipo" value="centro">
                         <div class="form-group">
                             <label for="centro-nombre"><fmt:message key="suscribirse.nombreCentro" /></label>

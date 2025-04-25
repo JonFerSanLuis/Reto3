@@ -3,26 +3,34 @@ package com.bilbaoskp.model;
 public class Centro {
     private int codCentro;
     private String nombre;
-    private String localidad;
-    private String etapasEducativas;
-    private int numAlumnos;
+    private String responsable;
+    private String tipoCentro;
+	private int numAlumnos;
     private String email;
+    private String telefono;
     private int idSuscriptor; // Relación con la tabla suscriptores
 
     // Constructores
     public Centro() {
     }
 
-    public Centro(int codCentro, String nombre, String localidad, String etapasEducativas, int numAlumnos, String email) {
-        this.codCentro = codCentro;
-        this.nombre = nombre;
-        this.localidad = localidad;
-        this.etapasEducativas = etapasEducativas;
-        this.numAlumnos = numAlumnos;
-        this.email = email;
-    }
+    
 
-    // Getters y Setters
+    public Centro(int codCentro, String nombre, String responsable, String tipoCentro,
+			int numAlumnos, String email, String telefono) {
+		super();
+		this.codCentro = codCentro;
+		this.nombre = nombre;
+		this.responsable = responsable;
+		this.tipoCentro = tipoCentro;
+		this.numAlumnos = numAlumnos;
+		this.email = email;
+		this.telefono = telefono;
+	}
+
+
+
+	// Getters y Setters
     public int getCodCentro() {
         return codCentro;
     }
@@ -39,21 +47,21 @@ public class Centro {
         this.nombre = nombre;
     }
 
-    public String getLocalidad() {
-        return localidad;
-    }
+    public String getResponsable() {
+		return responsable;
+	}
 
-    public void setLocalidad(String localidad) {
-        this.localidad = localidad;
-    }
+	public void setResponsable(String responsable) {
+		this.responsable = responsable;
+	}
+    
+    public String getTipoCentro() {
+		return tipoCentro;
+	}
 
-    public String getEtapasEducativas() {
-        return etapasEducativas;
-    }
-
-    public void setEtapasEducativas(String etapasEducativas) {
-        this.etapasEducativas = etapasEducativas;
-    }
+	public void setTipoCentro(String tipoCentro) {
+		this.tipoCentro = tipoCentro;
+	}
 
     public int getNumAlumnos() {
         return numAlumnos;
@@ -71,7 +79,15 @@ public class Centro {
         this.email = email;
     }
 
-    public int getIdSuscriptor() {
+    public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public int getIdSuscriptor() {
         return idSuscriptor;
     }
 
@@ -84,8 +100,8 @@ public class Centro {
         return "Centro{" +
                 "codCentro=" + codCentro +
                 ", nombre='" + nombre + '\'' +
-                ", localidad='" + localidad + '\'' +
-                ", etapasEducativas='" + etapasEducativas + '\'' +
+                ", localidad='" +  '\'' +
+                ", etapasEducativas='" +
                 ", numAlumnos=" + numAlumnos +
                 ", email='" + email + '\'' +
                 ", idSuscriptor=" + idSuscriptor +

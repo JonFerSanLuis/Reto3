@@ -43,9 +43,9 @@ public class AltaSuscriptor extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String tipoRegistro = request.getParameter("tipoRegistro");
+		String tipoRegistro = request.getParameter("tipo");
 	
-	if ("sucriptor".equals(tipoRegistro)) {
+	if ("ordinario".equals(tipoRegistro)) {
 		String username = request.getParameter("username");
 		String estado = "estado";
 		Date fecha_alta = new Date(System.currentTimeMillis()); // No existe este campo en el formulario, con este codigo se insertará en el objeto la fecha actual al darle al boton de registrar
@@ -66,12 +66,13 @@ public class AltaSuscriptor extends HttpServlet {
 	else if ("centro".equals(tipoRegistro)) {  
 		
 		String nombre = request.getParameter("nombre");
-		String localidad = request.getParameter("localidad");
-		String etapasEducativas = request.getParameter("etapasEducativas");
-		int numAlumnos = Integer.valueOf(request.getParameter("numAlumnos"));
+		String responsable = request.getParameter("responsable");
 		String email = request.getParameter("email");
+		String tipoCentro = request.getParameter("tipo");
+		int numAlumnos = Integer.valueOf(request.getParameter("alumnos"));
+		String numTelefono = request.getParameter("telefono");
 		
-		Centro centro = new Centro(0, nombre, localidad, etapasEducativas, numAlumnos, email);
+		Centro centro = new Centro(0, nombre, responsable, tipoCentro, numAlumnos, email, numTelefono);
 		
 		if (centroService.addCentro(centro)) {  
 			response.sendRedirect("confirmacionCentro.jsp");

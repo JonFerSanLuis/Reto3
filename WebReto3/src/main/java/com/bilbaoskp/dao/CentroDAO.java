@@ -14,16 +14,16 @@ public class CentroDAO {
         Connection con = AccesoBD.getConnection();
         PreparedStatement ps = null;
         
-        String sql = "INSERT INTO centros (nombre, localidad, etapas_educativas, num_alumnos, email) VALUES (?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO centros (cod_centro, nombre, num_alumnos, email, telefono) VALUES (?, ?, ?, ?, ?);";
         
         try {
             ps = con.prepareStatement(sql);
             
-            ps.setString(1, centro.getNombre());
-            ps.setString(2, centro.getLocalidad());
-            ps.setString(3, centro.getEtapasEducativas());
-            ps.setInt(4, centro.getNumAlumnos());
-            ps.setString(5, centro.getEmail());
+            ps.setInt(1, centro.getCodCentro());
+            ps.setString(2, centro.getNombre());
+            ps.setInt(3, centro.getNumAlumnos());
+            ps.setString(4, centro.getEmail());
+            ps.setString(5, centro.getTelefono());
             
             if (ps.executeUpdate() > 0) {
                 return true;
