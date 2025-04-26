@@ -28,11 +28,9 @@ public class RankingDAO {
         ResultSet rs = null;
         
         try {
-            // Obtener conexión a la base de datos
+        	
             con = AccesoBD.getConnection();
             
-            // Consulta SQL para obtener el ranking
-            // Unimos las tablas suscriptores, partida y escape_room para obtener los puntos
             String sql = "SELECT s.id_suscriptor, s.username, " +
                          "COALESCE(MAX(e.puntos_totales), 0) as puntos, " +
                          "COUNT(DISTINCT e.id) as partidas " +
@@ -47,21 +45,18 @@ public class RankingDAO {
             
             int posicion = 1;
             
-            // Recorrer los resultados y crear objetos RankingUsuario
             while (rs.next()) {
-                RankingUsuario usuario = new RankingUsuario();
-                usuario.setPosicion(posicion++);
-                usuario.setId(rs.getInt("id_suscriptor"));
-                usuario.setNombre(rs.getString("username"));
-                usuario.setPuntuacion(rs.getInt("puntos"));
-                usuario.setPartidas(rs.getInt("partidas"));
+                RankingUsuario ranking = new RankingUsuario();
+                ranking.setPosicion(posicion++);
+                ranking.setId(rs.getInt("id_suscriptor"));
+                ranking.setNombre(rs.getString("username"));
+                ranking.setPuntuacion(rs.getInt("puntos"));
+                ranking.setPartidas(rs.getInt("partidas"));
                 
-                // Calculamos el nivel basado en los puntos (ejemplo simple)
-                // Cada 1000 puntos sube un nivel
-                int nivel = (rs.getInt("puntos") / 1000) + 1;
-                usuario.setNivel(nivel);
                 
-                listaRanking.add(usuario);
+                ranking.setNivel((rs.getInt("puntos") / 1000) + 1);
+                
+                listaRanking.add(ranking);
             }
             
         } catch (SQLException e) {

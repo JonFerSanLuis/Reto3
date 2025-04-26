@@ -10,25 +10,26 @@ public class RankingUsuario {
     
     public RankingUsuario() {
     }
-    
-    public RankingUsuario(int posicion, int id, String nombre, int puntuacion, int nivel, int partidas) {
-        this.posicion = posicion;
-        this.id = id;
-        this.nombre = nombre;
-        this.puntuacion = puntuacion;
-        this.nivel = nivel;
-        this.partidas = partidas;
-    }
 
-    public int getPosicion() {
-        return posicion;
-    }
+	public RankingUsuario(int posicion, int id, String nombre, int puntuacion, int nivel, int partidas) {
+		super();
+		this.posicion = posicion;
+		this.id = id;
+		this.nombre = nombre;
+		this.puntuacion = puntuacion;
+		this.nivel = nivel;
+		this.partidas = partidas;
+	}
 
-    public void setPosicion(int posicion) {
-        this.posicion = posicion;
-    }
+	public int getPosicion() {
+		return posicion;
+	}
 
-    public int getId() {
+	public void setPosicion(int posicion) {
+		this.posicion = posicion;
+	}
+
+	public int getId() {
         return id;
     }
 

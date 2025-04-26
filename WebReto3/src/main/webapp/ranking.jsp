@@ -87,9 +87,6 @@
                                             ${usuario.posicion}
                                         </td>
                                         <td class="player">
-                                            <div class="player-avatar">
-                                                <img src="/placeholder.svg?height=40&width=40" alt="Avatar">
-                                            </div>
                                             <span class="player-name">${usuario.nombre}</span>
                                         </td>
                                         <td class="score">${usuario.puntuacion}</td>
