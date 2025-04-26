@@ -7,7 +7,7 @@ public class CentroService {
     CentroDAO centroDao;
 
     public CentroService() {
-        centroDao = new CentroDAO(); // Suponiendo que tienes un DAO para manejar los centros
+        centroDao = new CentroDAO();
     }
 
     public boolean addCentro(Centro centro) {
