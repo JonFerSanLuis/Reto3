@@ -31,14 +31,14 @@ public class RankingDAO {
         	
             con = AccesoBD.getConnection();
             
-            String sql = "SELECT s.id_suscriptor, s.username, " +
-                         "COALESCE(MAX(e.puntos_totales), 0) as puntos, " +
-                         "COUNT(DISTINCT e.id) as partidas " +
-                         "FROM suscriptores s " +
-                         "LEFT JOIN partida p ON p.tipo_partida = s.tipo " +
-                         "LEFT JOIN escape_room e ON e.id_partida = p.id " +
-                         "GROUP BY s.id_suscriptor, s.username " +
-                         "ORDER BY puntos DESC, partidas DESC";
+            String sql = "SELECT s.id_suscriptor, s.username,\r\n"
+            		+ "   COALESCE(MAX(e.puntos_totales), 0) as puntos,\r\n"
+            		+ "   COUNT(DISTINCT e.id) as partidas\r\n"
+            		+ "   FROM suscriptores s\r\n"
+            		+ "   LEFT JOIN escape_room e ON e.id_suscriptor = s.id_suscriptor\r\n"
+            		+ "   LEFT JOIN partida p ON p.id = e.id_partida\r\n"
+            		+ "   GROUP BY s.id_suscriptor, s.username\r\n"
+            		+ "   ORDER BY puntos DESC, partidas DESC";
             
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -84,15 +84,16 @@ public class RankingDAO {
         try {
             con = AccesoBD.getConnection();
             
-            String sql = "SELECT s.id_suscriptor, s.username, " +
-                         "COALESCE(MAX(e.puntos_totales), 0) as puntos, " +
-                         "COUNT(DISTINCT e.id) as partidas " +
-                         "FROM suscriptores s " +
-                         "LEFT JOIN partida p ON p.tipo_partida = s.tipo " +
-                         "LEFT JOIN escape_room e ON e.id_partida = p.id " +
-                         "WHERE s.username LIKE ? " +
-                         "GROUP BY s.id_suscriptor, s.username " +
-                         "ORDER BY puntos DESC, partidas DESC";
+            String sql = "SELECT s.id_suscriptor, s.username, \r\n"
+            		+ "       COALESCE(MAX(e.puntos_totales), 0) as puntos, \r\n"
+            		+ "       COUNT(DISTINCT e.id) as partidas\r\n"
+            		+ "FROM suscriptores s\r\n"
+            		+ "LEFT JOIN escape_room e ON e.id_suscriptor = s.id_suscriptor\r\n"
+            		+ "LEFT JOIN partida p ON p.id = e.id_partida\r\n"
+            		+ "WHERE s.username LIKE ?\r\n"
+            		+ "GROUP BY s.id_suscriptor, s.username\r\n"
+            		+ "ORDER BY puntos DESC, partidas DESC;\r\n"
+            		+ "";
             
             ps = con.prepareStatement(sql);
             ps.setString(1, "%" + nombreBusqueda + "%");

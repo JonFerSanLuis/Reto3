@@ -27,36 +27,41 @@ CREATE TABLE IF NOT EXISTS `cancelaciones` (
   `fecha_cancelacion` date NOT NULL,
   `num_jugadores` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`partida_id`),
-  CONSTRAINT `FK__partidas_clase` FOREIGN KEY (`partida_id`) REFERENCES `partidas_clase` (`id_partida`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `FK_cancelaciones_partidas_clase` FOREIGN KEY (`partida_id`) REFERENCES `partidas_clase` (`id_partida`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla bilbaoskp.cancelaciones: ~0 rows (aproximadamente)
+DELETE FROM `cancelaciones`;
 
 -- Volcando estructura para tabla bilbaoskp.centros
 DROP TABLE IF EXISTS `centros`;
 CREATE TABLE IF NOT EXISTS `centros` (
-  `cod_centro` int(11) NOT NULL AUTO_INCREMENT,
+  `id_suscriptor` int(11) NOT NULL,
+  `cod_centro` varchar(50) NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `localidad` varchar(500) NOT NULL,
-  `estapas_educativas` varchar(500) NOT NULL,
   `num_alumnos` int(11) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  PRIMARY KEY (`cod_centro`)
+  `email` varchar(50) NOT NULL DEFAULT '',
+  `telefono` varchar(20) NOT NULL,
+  `tipo_suscriptor` enum('centro','ordinario') DEFAULT NULL,
+  PRIMARY KEY (`id_suscriptor`),
+  CONSTRAINT `FK_centros_suscriptores` FOREIGN KEY (`id_suscriptor`) REFERENCES `suscriptores` (`id_suscriptor`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla bilbaoskp.centros: ~0 rows (aproximadamente)
+DELETE FROM `centros`;
 
 -- Volcando estructura para tabla bilbaoskp.clases
 DROP TABLE IF EXISTS `clases`;
 CREATE TABLE IF NOT EXISTS `clases` (
   `nom_clase` varchar(100) NOT NULL,
-  `cod_centro` int(11) NOT NULL,
+  `id_suscriptor` int(11) NOT NULL,
   PRIMARY KEY (`nom_clase`),
-  KEY `FK__centros` (`cod_centro`),
-  CONSTRAINT `FK__centros` FOREIGN KEY (`cod_centro`) REFERENCES `centros` (`cod_centro`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `FK_clases_centros` (`id_suscriptor`),
+  CONSTRAINT `FK_clases_centros` FOREIGN KEY (`id_suscriptor`) REFERENCES `centros` (`id_suscriptor`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla bilbaoskp.clases: ~0 rows (aproximadamente)
+DELETE FROM `clases`;
 
 -- Volcando estructura para tabla bilbaoskp.compra
 DROP TABLE IF EXISTS `compra`;
@@ -67,26 +72,39 @@ CREATE TABLE IF NOT EXISTS `compra` (
   `id_suscriptor` int(11) NOT NULL,
   PRIMARY KEY (`cod_compra`),
   KEY `FK_compra_suscriptores` (`id_suscriptor`),
-  CONSTRAINT `FK_compra_suscriptores` FOREIGN KEY (`id_suscriptor`) REFERENCES `suscriptores` (`id_suscriptor`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `FK_compra_suscriptores` FOREIGN KEY (`id_suscriptor`) REFERENCES `suscriptores` (`id_suscriptor`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla bilbaoskp.compra: ~0 rows (aproximadamente)
+DELETE FROM `compra`;
 
 -- Volcando estructura para tabla bilbaoskp.escape_room
 DROP TABLE IF EXISTS `escape_room`;
 CREATE TABLE IF NOT EXISTS `escape_room` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_partida` int(11) NOT NULL,
+  `id_suscriptor` int(11) NOT NULL,
   `tiempo_seg` int(11) NOT NULL,
   `pistas_usadas` int(11) NOT NULL,
   `puntos_totales` int(11) NOT NULL,
   `tipo_suscriptor` enum('centro','ordinario') NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_escape_room_partida` (`id_partida`),
-  CONSTRAINT `FK_escape_room_partida` FOREIGN KEY (`id_partida`) REFERENCES `partida` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  KEY `FK_escape_room_suscriptores` (`id_suscriptor`),
+  CONSTRAINT `FK_escape_room_partida` FOREIGN KEY (`id_partida`) REFERENCES `partida` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_escape_room_suscriptores` FOREIGN KEY (`id_suscriptor`) REFERENCES `suscriptores` (`id_suscriptor`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla bilbaoskp.escape_room: ~5 rows (aproximadamente)
+DELETE FROM `escape_room`;
+INSERT INTO `escape_room` (`id`, `id_partida`, `id_suscriptor`, `tiempo_seg`, `pistas_usadas`, `puntos_totales`, `tipo_suscriptor`) VALUES
+	(1, 1, 2, 1800, 2, 9845, 'ordinario'),
+	(2, 2, 3, 2100, 3, 9621, 'ordinario'),
+	(3, 3, 4, 2400, 4, 9412, 'ordinario'),
+	(4, 1, 5, 2700, 5, 8975, 'ordinario'),
+	(5, 2, 6, 3000, 6, 8743, 'ordinario'),
+	(6, 3, 7, 2000, 2, 9500, 'ordinario'),
+	(7, 2, 8, 2200, 3, 9300, 'ordinario');
 
 -- Volcando estructura para tabla bilbaoskp.partida
 DROP TABLE IF EXISTS `partida`;
@@ -96,9 +114,14 @@ CREATE TABLE IF NOT EXISTS `partida` (
   `tipo_partida` enum('centro','ordinaria') NOT NULL,
   `fecha` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla bilbaoskp.partida: ~3 rows (aproximadamente)
+DELETE FROM `partida`;
+INSERT INTO `partida` (`id`, `nombre`, `tipo_partida`, `fecha`) VALUES
+	(1, 'Partida 1', 'ordinaria', '2023-06-01'),
+	(2, 'Partida 2', 'ordinaria', '2023-06-15'),
+	(3, 'Partida 3', 'ordinaria', '2023-07-01');
 
 -- Volcando estructura para tabla bilbaoskp.partidas_clase
 DROP TABLE IF EXISTS `partidas_clase`;
@@ -111,11 +134,12 @@ CREATE TABLE IF NOT EXISTS `partidas_clase` (
   `cod_partida` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_partida`),
   KEY `FK_partidas_clase_clases` (`nom_clase`),
-  CONSTRAINT `FK_partidas_clase_clases` FOREIGN KEY (`nom_clase`) REFERENCES `clases` (`nom_clase`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_partidas_clase_partida` FOREIGN KEY (`id_partida`) REFERENCES `partida` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `FK_partidas_clase_clases` FOREIGN KEY (`nom_clase`) REFERENCES `clases` (`nom_clase`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_partidas_clase_partida` FOREIGN KEY (`id_partida`) REFERENCES `partida` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla bilbaoskp.partidas_clase: ~0 rows (aproximadamente)
+DELETE FROM `partidas_clase`;
 
 -- Volcando estructura para tabla bilbaoskp.plan_suscripcion
 DROP TABLE IF EXISTS `plan_suscripcion`;
@@ -126,7 +150,8 @@ CREATE TABLE IF NOT EXISTS `plan_suscripcion` (
   PRIMARY KEY (`tipo_suscripcion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla bilbaoskp.plan_suscripcion: ~0 rows (aproximadamente)
+DELETE FROM `plan_suscripcion`;
 
 -- Volcando estructura para tabla bilbaoskp.suscriptores
 DROP TABLE IF EXISTS `suscriptores`;
@@ -141,9 +166,18 @@ CREATE TABLE IF NOT EXISTS `suscriptores` (
   `edad` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_suscriptor`),
   KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla bilbaoskp.suscriptores: ~7 rows (aproximadamente)
+DELETE FROM `suscriptores`;
+INSERT INTO `suscriptores` (`id_suscriptor`, `username`, `estado`, `fecha_alta`, `tipo`, `password`, `correo`, `edad`) VALUES
+	(2, 'Jon', 'estado', '2025-04-26', 'ordinario', '1234', 'joni@gmail.com', 21),
+	(3, 'PEpe', 'estado', '2025-04-26', 'ordinario', '1234', 'peperodrigues@gmail.com', 21),
+	(4, 'GamerPro123', 'activo', '2023-01-15', 'ordinario', 'password123', 'gamer123@email.com', 25),
+	(5, 'MasterGamer', 'activo', '2023-02-20', 'ordinario', 'password456', 'master@email.com', 30),
+	(6, 'GameWizard', 'activo', '2023-03-10', 'ordinario', 'password789', 'wizard@email.com', 22),
+	(7, 'PlayerOne', 'activo', '2023-04-05', 'ordinario', 'password101', 'player1@email.com', 28),
+	(8, 'GameChampion', 'activo', '2023-05-12', 'ordinario', 'password202', 'champion@email.com', 19);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
