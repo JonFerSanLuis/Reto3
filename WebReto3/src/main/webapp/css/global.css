@@ -428,4 +428,8 @@ body {
   .footer-contact p {
     justify-content: center;
   }
+  
+  a {
+	text-decoration: none;
+}
 }

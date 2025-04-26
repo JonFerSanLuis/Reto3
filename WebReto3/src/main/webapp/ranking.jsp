@@ -30,7 +30,7 @@
         <nav class="nav-container">
             <ul class="nav-links">
                 <li><a href="informacion.jsp"><fmt:message key="menu.informacion" /></a></li>
-                <li><a href="ranking.jsp"><fmt:message key="menu.ranking" /></a></li>
+                <li><a href="Ranking"><fmt:message key="menu.ranking" /></a></li>
                 <li><a href="comprarCupon.jsp"><fmt:message key="menu.comprarCupon" /></a></li>
             </ul>
         </nav>
@@ -55,8 +55,8 @@
         <div class="ranking-container">
             <section class="search-section">
                 <h2 class="search-title"><fmt:message key="ranking.buscarJugador" /></h2>
-                <form class="search-form">
-                    <input type="text" class="search-input" placeholder="Nombre de usuario o ID">
+                <form class="search-form" action="Ranking" method="get">
+                    <input type="text" class="search-input" name="busqueda" placeholder="Nombre de usuario o ID" value="${param.busqueda}">
                     <button type="submit" class="search-button"><fmt:message key="ranking.buscar" /></button>
                 </form>
             </section>
@@ -74,129 +74,35 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="position top-position">1</td>
-                            <td class="player">
-                                <div class="player-avatar">
-                                    <img src="/placeholder.svg?height=40&width=40" alt="Avatar">
-                                </div>
-                                <span class="player-name">GamerPro123</span>
-                            </td>
-                            <td class="score">9,845</td>
-                            <td>42</td>
-                            <td>156</td>
-                        </tr>
-                        <tr>
-                            <td class="position top-position">2</td>
-                            <td class="player">
-                                <div class="player-avatar">
-                                    <img src="/placeholder.svg?height=40&width=40" alt="Avatar">
-                                </div>
-                                <span class="player-name">MasterGamer</span>
-                            </td>
-                            <td class="score">9,621</td>
-                            <td>39</td>
-                            <td>142</td>
-                        </tr>
-                        <tr>
-                            <td class="position top-position">3</td>
-                            <td class="player">
-                                <div class="player-avatar">
-                                    <img src="/placeholder.svg?height=40&width=40" alt="Avatar">
-                                </div>
-                                <span class="player-name">GameWizard</span>
-                            </td>
-                            <td class="score">9,412</td>
-                            <td>38</td>
-                            <td>135</td>
-                        </tr>
-                        <tr>
-                            <td class="position">4</td>
-                            <td class="player">
-                                <div class="player-avatar">
-                                    <img src="/placeholder.svg?height=40&width=40" alt="Avatar">
-                                </div>
-                                <span class="player-name">PlayerOne</span>
-                            </td>
-                            <td class="score">8,975</td>
-                            <td>36</td>
-                            <td>128</td>
-                        </tr>
-                        <tr>
-                            <td class="position">5</td>
-                            <td class="player">
-                                <div class="player-avatar">
-                                    <img src="/placeholder.svg?height=40&width=40" alt="Avatar">
-                                </div>
-                                <span class="player-name">GameChampion</span>
-                            </td>
-                            <td class="score">8,743</td>
-                            <td>35</td>
-                            <td>122</td>
-                        </tr>
-                        <tr>
-                            <td class="position">6</td>
-                            <td class="player">
-                                <div class="player-avatar">
-                                    <img src="/placeholder.svg?height=40&width=40" alt="Avatar">
-                                </div>
-                                <span class="player-name">ProGamer</span>
-                            </td>
-                            <td class="score">8,521</td>
-                            <td>33</td>
-                            <td>118</td>
-                        </tr>
-                        <tr>
-                            <td class="position">7</td>
-                            <td class="player">
-                                <div class="player-avatar">
-                                    <img src="/placeholder.svg?height=40&width=40" alt="Avatar">
-                                </div>
-                                <span class="player-name">GameMaster</span>
-                            </td>
-                            <td class="score">8,312</td>
-                            <td>32</td>
-                            <td>115</td>
-                        </tr>
-                        <tr>
-                            <td class="position">8</td>
-                            <td class="player">
-                                <div class="player-avatar">
-                                    <img src="/placeholder.svg?height=40&width=40" alt="Avatar">
-                                </div>
-                                <span class="player-name">LevelUp</span>
-                            </td>
-                            <td class="score">8,105</td>
-                            <td>31</td>
-                            <td>110</td>
-                        </tr>
-                        <tr>
-                            <td class="position">9</td>
-                            <td class="player">
-                                <div class="player-avatar">
-                                    <img src="/placeholder.svg?height=40&width=40" alt="Avatar">
-                                </div>
-                                <span class="player-name">GameHero</span>
-                            </td>
-                            <td class="score">7,932</td>
-                            <td>30</td>
-                            <td>105</td>
-                        </tr>
-                        <tr>
-                            <td class="position">10</td>
-                            <td class="player">
-                                <div class="player-avatar">
-                                    <img src="/placeholder.svg?height=40&width=40" alt="Avatar">
-                                </div>
-                                <span class="player-name">PlayerX</span>
-                            </td>
-                            <td class="score">7,845</td>
-                            <td>29</td>
-                            <td>102</td>
-                        </tr>
+                        <c:choose>
+                            <c:when test="${empty listaRanking}">
+                                <tr>
+                                    <td colspan="5" style="text-align: center;">No hay jugadores disponibles</td>
+                                </tr>
+                            </c:when>
+                            <c:otherwise>
+                                <c:forEach var="usuario" items="${listaRanking}">
+                                    <tr>
+                                        <td class="position ${usuario.posicion <= 3 ? 'top-position' : ''}">
+                                            ${usuario.posicion}
+                                        </td>
+                                        <td class="player">
+                                            <div class="player-avatar">
+                                                <img src="/placeholder.svg?height=40&width=40" alt="Avatar">
+                                            </div>
+                                            <span class="player-name">${usuario.nombre}</span>
+                                        </td>
+                                        <td class="score">${usuario.puntuacion}</td>
+                                        <td>${usuario.nivel}</td>
+                                        <td>${usuario.partidas}</td>
+                                    </tr>
+                                </c:forEach>
+                            </c:otherwise>
+                        </c:choose>
                     </tbody>
                 </table>
 
+                <!-- Paginación simple - se puede mejorar en el futuro -->
                 <div class="pagination">
                     <button class="pagination-button"><fmt:message key="ranking.anterior" /></button>
                     <button class="pagination-button active">1</button>
@@ -210,7 +116,7 @@
         </div>
     </div>
 
-    <!-- Reemplazar el footer actual por el nuevo diseño -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-section">
