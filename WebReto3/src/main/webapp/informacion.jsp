@@ -138,7 +138,7 @@
 
             <section class="contact-section">
                 <h2 class="section-title"><fmt:message key="info.contacto" /></h2>
-                <form class="contact-form">
+                <form class="contact-form" method="post" action="enviarEmail">
                     <div class="form-group">
                         <label for="nombre"><fmt:message key="info.nombre" /></label>
                         <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>

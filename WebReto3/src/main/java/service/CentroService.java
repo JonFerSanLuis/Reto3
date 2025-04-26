@@ -1,5 +1,7 @@
 package service;
 
+import java.sql.SQLException;
+
 import com.bilbaoskp.dao.CentroDAO;
 import com.bilbaoskp.model.Centro;
 
@@ -7,10 +9,16 @@ public class CentroService {
     CentroDAO centroDao;
 
     public CentroService() {
-        centroDao = new CentroDAO(); // Suponiendo que tienes un DAO para manejar los centros
+        centroDao = new CentroDAO();
     }
 
     public boolean addCentro(Centro centro) {
-        return centroDao.addCentro(centro);
+        try {
+			return centroDao.addCentro(centro);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
     }
 }
