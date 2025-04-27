@@ -33,7 +33,7 @@
         <nav class="nav-container">
             <ul class="nav-links">
                 <li><a href="informacion.jsp"><fmt:message key="menu.informacion" /></a></li>
-                <li><a href="Ranking"><fmt:message key="menu.ranking" /></a></li>
+                <li><a href="ranking.jsp"><fmt:message key="menu.ranking" /></a></li>
                 <li><a href="comprarCupon.jsp"><fmt:message key="menu.comprarCupon" /></a></li>
             </ul>
         </nav>
@@ -47,7 +47,6 @@
                     <li><a href="CambiarIdioma?idioma=eu"><fmt:message key="idioma.euskera" /></a></li>
                 </ul>
             </div>
-            <a href="login.jsp" class="btn">Iniciar sesion</a>
             <a href="suscribirse.jsp" class="btn"><fmt:message key="menu.suscribirse" /></a>
             <a href="descargarJuego.jsp" class="btn"><fmt:message key="menu.descargar" /></a>
         </div>
@@ -183,7 +182,7 @@
                         </label>
 
                         <!-- Iframe con el video de YouTube; se activa el autoplay -->
-                        <iframe class="youtube-iframe" src="https://www.youtube.com/embed/u7kdVe8q5zs?autoplay=1&rel=0"
+                        <iframe class="youtube-iframe" src="img/Video1.mp4"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>
