@@ -52,6 +52,15 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		if (suscriptorService.login(username, password)) {
+			// Crear una cookie con el nombre de usuario
+	        javax.servlet.http.Cookie cookie = new javax.servlet.http.Cookie("usuario", username);
+
+	        cookie.setMaxAge(24 * 60 * 60);
+
+	        cookie.setPath("/");
+
+	        response.addCookie(cookie);
+			
 			response.sendRedirect("perfil.jsp");
 		} else {
 			request.setAttribute("errorMensaje", "Error al iniciar sesion. Intentalo de nuevo.");
