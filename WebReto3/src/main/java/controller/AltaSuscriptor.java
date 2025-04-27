@@ -99,27 +99,39 @@ public class AltaSuscriptor extends HttpServlet {
 		Centro centro = new Centro(codigo_centro, nombre, responsable, tipoCentro, numAlumnos, email, numTelefono);
 		
 		if (centroService.addCentro(centro)) { 
-			Cupon c = new Cupon(); 
-			
-			for(int a = 0; a<numAlumnos;a++) {
-				Suscriptor s = new Suscriptor();
-				SuscriptorService suscriptorService = new SuscriptorService();
-				s = suscriptorService.getSuscriptorByNombreService(nombre);				
-				c.setIdSuscriptor(s.getIdSuscriptor());
-				c.setTipo("Bullying");
-				Date fechaActual = new Date(System.currentTimeMillis());
-				Calendar calendar = Calendar.getInstance();
-			    calendar.setTime(fechaActual);
-			    calendar.add(Calendar.YEAR, 1);
-			    Date fechaCaducidad = new Date(calendar.getTimeInMillis());;
-			    
-			    c.setFechaCaducidad(fechaCaducidad);
-			    CuponService cup = new CuponService();
-			    cup.asignarCuponService(c);
-			}
-		
-			response.sendRedirect("index.jsp");
-		} else {
+            // Solo registrar al responsable
+            Suscriptor s = new Suscriptor();
+            s.setUsername(responsable); // Nombre del responsable
+            s.setEstado("estado");
+            s.setFechaAlta(new Date(System.currentTimeMillis()));
+            s.setTipo("responsable"); // Tipo 'responsable'
+            s.setPassword("defaultPassword"); // Recuerda cambiarlo luego
+            s.setCorreo(email); // Correo del responsable
+            s.setEdad(0); // Edad predeterminada
+
+            suscriptorService.addSuscriptor(s);
+
+            // Asignar cupon al responsable
+            s = suscriptorService.getSuscriptorByNombreService(s.getUsername()); // Obtener el suscriptor por nombre
+            Cupon c = new Cupon();
+            c.setIdSuscriptor(s.getIdSuscriptor());
+            c.setTipo("Bullying");
+
+            Date fechaActual = new Date(System.currentTimeMillis());
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(fechaActual);
+            calendar.add(Calendar.YEAR, 1); // Caducidad de 1 año
+            Date fechaCaducidad = new Date(calendar.getTimeInMillis());
+
+            c.setFechaCaducidad(fechaCaducidad);
+            c.setEstado("disponible");
+
+            CuponService cup = new CuponService();
+            cup.asignarCuponService(c);
+
+            response.sendRedirect("index.jsp"); // Redirigir al index
+        }
+		else {
 			request.setAttribute("errorMensaje", "Error al registrar suscriptor. Inténtalo de nuevo.");
             request.getRequestDispatcher("suscribirse.jsp").forward(request, response);
 		}
