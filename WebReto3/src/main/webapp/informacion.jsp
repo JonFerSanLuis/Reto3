@@ -33,7 +33,7 @@
         <nav class="nav-container">
             <ul class="nav-links">
                 <li><a href="informacion.jsp"><fmt:message key="menu.informacion" /></a></li>
-                <li><a href="Ranking"><fmt:message key="menu.ranking" /></a></li>
+                <li><a href="ranking.jsp"><fmt:message key="menu.ranking" /></a></li>
                 <li><a href="comprarCupon.jsp"><fmt:message key="menu.comprarCupon" /></a></li>
             </ul>
         </nav>
@@ -47,7 +47,6 @@
                     <li><a href="CambiarIdioma?idioma=eu"><fmt:message key="idioma.euskera" /></a></li>
                 </ul>
             </div>
-            <a href="login.jsp" class="btn">Iniciar sesion</a>
             <a href="suscribirse.jsp" class="btn"><fmt:message key="menu.suscribirse" /></a>
             <a href="descargarJuego.jsp" class="btn"><fmt:message key="menu.descargar" /></a>
         </div>
@@ -59,7 +58,7 @@
         <div class="info-container">
             <section class="about-section">
                 <div class="about-image">
-                    <img src="/placeholder.svg?height=400&width=600" alt="Sobre nosotros">
+                    <img src="img/Portada.png" alt="Sobre nosotros">
                 </div>
                 <div class="about-content">
                     <h2 class="section-title"><fmt:message key="info.sobreNosotros" /></h2>
@@ -99,47 +98,69 @@
                 </div>
             </section>
 
-            <section class="team-section">
-                <h2 class="section-title"><fmt:message key="info.equipo" /></h2>
-                <div class="team-grid">
-                    <div class="team-card">
-                        <div class="team-image">
-                            <img src="/placeholder.svg?height=150&width=150" alt="Miembro del equipo">
-                        </div>
-                        <h3 class="team-name">Ana García</h3>
-                        <p class="team-role">Directora de Proyecto</p>
-                        <p class="team-bio">Con más de 10 años de experiencia en desarrollo de juegos, Ana lidera nuestro equipo con pasión y visión innovadora.</p>
-                    </div>
-                    <div class="team-card">
-                        <div class="team-image">
-                            <img src="/placeholder.svg?height=150&width=150" alt="Miembro del equipo">
-                        </div>
-                        <h3 class="team-name">Carlos Rodríguez</h3>
-                        <p class="team-role">Desarrollador Principal</p>
-                        <p class="team-bio">Especialista en desarrollo de aplicaciones interactivas, Carlos es responsable de la arquitectura técnica del juego.</p>
-                    </div>
-                    <div class="team-card">
-                        <div class="team-image">
-                            <img src="/placeholder.svg?height=150&width=150" alt="Miembro del equipo">
-                        </div>
-                        <h3 class="team-name">María López</h3>
-                        <p class="team-role">Diseñadora UX/UI</p>
-                        <p class="team-bio">María combina creatividad y funcionalidad para crear interfaces intuitivas y atractivas para nuestros usuarios.</p>
-                    </div>
-                    <div class="team-card">
-                        <div class="team-image">
-                            <img src="/placeholder.svg?height=150&width=150" alt="Miembro del equipo">
-                        </div>
-                        <h3 class="team-name">Juan Martínez</h3>
-                        <p class="team-role">Especialista en Contenido</p>
-                        <p class="team-bio">Juan se encarga de crear contenido educativo y misiones que hacen del juego una experiencia enriquecedora.</p>
-                    </div>
+          <section class="team-section">
+    <h2 class="section-title"><fmt:message key="info.equipo" /></h2>
+    <div class="team-grid">
+        <div class="team-card">
+            <a href="img/Cv_Erlantz.png" target="_blank">
+                <div class="team-image">
+                    <img src="img/Erlantz.png" alt="foto Erlantz">
                 </div>
-            </section>
+            </a>
+            <h3 class="team-name">Erlantz Tolentino</h3>
+            <p class="team-role">Desarrollador Web</p>
+            <p class="team-bio">Especialista en el desarrollo de aplicaciones interactivas, responsable de la arquitectura técnica del juego.</p>
+        </div>
+
+        <div class="team-card">
+            <a href="img/curriculumJon.png" target="_blank">
+                <div class="team-image">
+                    <img src="img/Jon.png" alt="foto Jon">
+                </div>
+            </a>
+            <h3 class="team-name">Jon Fernandez</h3>
+            <p class="team-role">Desarrollador Web</p>
+            <p class="team-bio">Con más de 10 años de experiencia en desarrollo de juegos, lidera nuestro equipo con pasión e innovación.</p>
+        </div>
+
+        <div class="team-card">
+            <a href="img/curriculum%20josue.jpeg" target="_blank">
+                <div class="team-image">
+                    <img src="img/Josue.png" alt="foto Josue">
+                </div>
+            </a>
+            <h3 class="team-name">Josue Mateo</h3>
+            <p class="team-role">Desarrollador Web</p>
+            <p class="team-bio">Josue combina creatividad y funcionalidad para diseñar interfaces intuitivas y atractivas.</p>
+        </div>
+
+        <div class="team-card">
+            <a href="img/Currículum%20Deiner.pdf" target="_blank">
+                <div class="team-image">
+                    <img src="img/Deiner2.png" alt="foto Deiner">
+                </div>
+            </a>
+            <h3 class="team-name">Deiner Uyuquipa</h3>
+            <p class="team-role">Desarrollador Web</p>
+            <p class="team-bio">Deiner crea contenido educativo y misiones que enriquecen la experiencia del juego.</p>
+        </div>
+
+        <div class="team-card">
+            <a href="img/CV_Aldo.png" target="_blank">
+                <div class="team-image">
+                    <img src="img/Aldo.png" alt="foto Aldo">
+                </div>
+            </a>
+            <h3 class="team-name">Aldo</h3>
+            <p class="team-role">Desarrollador Web</p>
+            <p class="team-bio">Aldo desarrolla contenido educativo y misiones que hacen del juego una experiencia enriquecedora.</p>
+        </div>
+    </div>
+</section>
 
             <section class="contact-section">
                 <h2 class="section-title"><fmt:message key="info.contacto" /></h2>
-                <form class="contact-form" method="post" action="enviarEmail">
+                <form class="contact-form">
                     <div class="form-group">
                         <label for="nombre"><fmt:message key="info.nombre" /></label>
                         <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>

@@ -1,4 +1,3 @@
-/* Estilos específicos para la página de comprar cupón */
 .cupon-container {
   display: flex;
   flex-direction: column;
@@ -9,6 +8,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 30px;
+  align-items: stretch;
 }
 
 .cupon-card {
@@ -17,6 +17,9 @@
   overflow: hidden;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .cupon-card:hover {
@@ -50,6 +53,9 @@
 
 .cupon-body {
   padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .cupon-features {
@@ -70,12 +76,13 @@
 }
 
 .cupon-features li::before {
-  content: "✓";
+  content: "\2713";
   color: #4caf50;
   font-weight: bold;
 }
 
 .cupon-button {
+  margin-top: auto;
   display: block;
   width: 100%;
   background-color: #f4a261;
@@ -175,4 +182,19 @@
     flex-direction: column;
     gap: 0;
   }
+}
+
+/* ======== NUEVO: Estilos del selector de idioma ======== */
+.idioma-menu a {
+  color: white;               /* Letras blancas */
+  text-decoration: none;      /* Sin subrayado */
+  padding: 8px 12px;           /* Espaciado bonito */
+  display: block;              /* Toda la línea clickable */
+}
+
+.idioma-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Fondo blanquito suave */
+  text-decoration: none;                      /* Sin subrayado en hover */
+  color: white;                               /* Letra sigue blanca */
+  border-radius: 5px;                         /* Bordes redondeados */
 }

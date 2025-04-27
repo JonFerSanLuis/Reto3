@@ -354,3 +354,18 @@
     padding: 20px;
   }
 }
+
+/* ======== NUEVO: Estilos del selector de idioma ======== */
+.idioma-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  display: block;
+}
+
+.idioma-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+  color: white;
+  border-radius: 5px;
+}

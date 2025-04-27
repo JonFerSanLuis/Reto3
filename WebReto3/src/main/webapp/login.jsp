@@ -82,14 +82,15 @@
 						    <input type="checkbox" id="recuerdame" name="recuerdame">
         				    <label for="recuerdame">Recuérdame</label>
 
-                        <% 
-                            String errorLogin = (String) request.getAttribute("errorLogin");
-                            if (errorLogin != null) { 
-                        %>
-                            <p style="color: red;"><%= errorLogin %></p>
-                        <% 
-                            } 
-                        %>
+	                        <%
+							String errorMensaje = (String) request.getAttribute("errorMensaje");
+							if (errorMensaje != null) { 
+							%>	
+							    <p style="color: red;"><%= errorMensaje %></p>
+							<%
+							} 
+							%>
+
                         <div class="form-submit">
                             <button type="submit"><fmt:message key="login.iniciarSesion" /></button>
                         </div>

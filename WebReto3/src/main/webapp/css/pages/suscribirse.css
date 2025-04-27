@@ -277,3 +277,18 @@
     min-height: 200px;
   }
 }
+
+/* ======== NUEVO: Estilos del selector de idioma ======== */
+.idioma-menu a {
+  color: white;               /* Letras blancas */
+  text-decoration: none;      /* Sin subrayado */
+  padding: 8px 12px;           /* Espaciado bonito */
+  display: block;              /* Toda la línea clickable */
+}
+
+.idioma-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Fondo blanquito suave */
+  text-decoration: none;                      /* Sin subrayado en hover */
+  color: white;                               /* Letra sigue blanca */
+  border-radius: 5px;                         /* Bordes redondeados */
+}
