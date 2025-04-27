@@ -56,7 +56,7 @@
             <section class="search-section">
                 <h2 class="search-title"><fmt:message key="ranking.buscarJugador" /></h2>
                 <form class="search-form" action="Ranking" method="get">
-                    <input type="text" class="search-input" name="busqueda" placeholder="Nombre de usuario o ID" value="${param.busqueda}">
+                    <input type="text" class="search-input" name="busqueda" placeholder="Nombre de usuario" value="${param.busqueda}">
                     <button type="submit" class="search-button"><fmt:message key="ranking.buscar" /></button>
                 </form>
             </section>
@@ -98,17 +98,6 @@
                         </c:choose>
                     </tbody>
                 </table>
-
-                <!-- Paginación simple - se puede mejorar en el futuro -->
-                <div class="pagination">
-                    <button class="pagination-button"><fmt:message key="ranking.anterior" /></button>
-                    <button class="pagination-button active">1</button>
-                    <button class="pagination-button">2</button>
-                    <button class="pagination-button">3</button>
-                    <button class="pagination-button">4</button>
-                    <button class="pagination-button">5</button>
-                    <button class="pagination-button"><fmt:message key="ranking.siguiente" /></button>
-                </div>
             </section>
         </div>
     </div>
