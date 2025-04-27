@@ -30,7 +30,7 @@
         <nav class="nav-container">
             <ul class="nav-links">
                 <li><a href="informacion.jsp"><fmt:message key="menu.informacion" /></a></li>
-                <li><a href="ranking.jsp"><fmt:message key="menu.ranking" /></a></li>
+                <li><a href="Ranking"><fmt:message key="menu.ranking" /></a></li>
                 <li><a href="comprarCupon.jsp"><fmt:message key="menu.comprarCupon" /></a></li>
             </ul>
         </nav>
@@ -44,6 +44,7 @@
                     <li><a href="CambiarIdioma?idioma=eu"><fmt:message key="idioma.euskera" /></a></li>
                 </ul>
             </div>
+            <a href="login.jsp" class="btn">Iniciar sesion</a>
             <a href="suscribirse.jsp" class="btn"><fmt:message key="menu.suscribirse" /></a>
             <a href="descargarJuego.jsp" class="btn"><fmt:message key="menu.descargar" /></a>
         </div>
@@ -71,6 +72,10 @@
                         <div class="form-group">
                             <label for="centro-nombre"><fmt:message key="suscribirse.nombreCentro" /></label>
                             <input type="text" id="centro-nombre" name="nombre" placeholder="Nombre del centro educativo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="centro-codigo"><fmt:message key="suscribirse.codigoCentro" /></label>
+                            <input type="text" id="centro-codigo" name="codigo" placeholder="Codigo del centro educativo" required>
                         </div>
                         <div class="form-group">
                             <label for="centro-responsable"><fmt:message key="suscribirse.responsable" /></label>
