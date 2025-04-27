@@ -43,14 +43,14 @@ CREATE TABLE IF NOT EXISTS `centros` (
   `tipo_suscriptor` enum('centro','ordinario') DEFAULT NULL,
   PRIMARY KEY (`id_suscriptor`),
   CONSTRAINT `FK_centros_suscriptores` FOREIGN KEY (`id_suscriptor`) REFERENCES `suscriptores` (`id_suscriptor`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Volcando datos para la tabla bilbaoskp.centros: ~3 rows (aproximadamente)
 DELETE FROM `centros`;
 INSERT INTO `centros` (`id_suscriptor`, `cod_centro`, `nombre`, `responsable`, `num_alumnos`, `email`, `telefono`, `tipo_suscriptor`) VALUES
-	(10, '0', 'San Luis', 'Josue Mateo', 25, 'josue@gmail.com', '65553215', 'centro'),
-	(12, '0', 'San Luis', 'Josue Mateo', 356, 'prueba@gmail.com', '65553215', 'centro'),
-	(13, '0', 'San Luis 2', 'Erlantz', 344, 'peperodrigues@gmail.com', '65553215', 'centro');
+	(13, '0', 'San Luis 2', 'Erlantz', 344, 'peperodrigues@gmail.com', '65553215', 'centro'),
+	(18, '0', 'Salesianos', 'Pepe', 1234, 'peperodrigues@gmail.com', '65553215', 'centro'),
+	(19, '12345', 'Prueba', 'Josue Mateo', 123, 'prueba@gmail.com', '65553215', 'centro');
 
 -- Volcando estructura para tabla bilbaoskp.clases
 CREATE TABLE IF NOT EXISTS `clases` (
@@ -162,24 +162,27 @@ CREATE TABLE IF NOT EXISTS `suscriptores` (
   `correo` varchar(50) DEFAULT NULL,
   `edad` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_suscriptor`),
-  KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Volcando datos para la tabla bilbaoskp.suscriptores: ~12 rows (aproximadamente)
+-- Volcando datos para la tabla bilbaoskp.suscriptores: ~17 rows (aproximadamente)
 DELETE FROM `suscriptores`;
 INSERT INTO `suscriptores` (`id_suscriptor`, `username`, `estado`, `fecha_alta`, `tipo`, `password`, `correo`, `edad`) VALUES
 	(2, 'Jon', 'estado', '2025-04-26', 'ordinario', '1234', 'joni@gmail.com', 21),
-	(3, 'PEpe', 'estado', '2025-04-26', 'ordinario', '1234', 'peperodrigues@gmail.com', 21),
+	(3, 'Pp', 'estado', '2025-04-26', 'ordinario', '1234', 'peperodrigues@gmail.com', 21),
 	(4, 'GamerPro123', 'activo', '2023-01-15', 'ordinario', 'password123', 'gamer123@email.com', 25),
 	(5, 'MasterGamer', 'activo', '2023-02-20', 'ordinario', 'password456', 'master@email.com', 30),
 	(6, 'GameWizard', 'activo', '2023-03-10', 'ordinario', 'password789', 'wizard@email.com', 22),
 	(7, 'PlayerOne', 'activo', '2023-04-05', 'ordinario', 'password101', 'player1@email.com', 28),
 	(8, 'GameChampion', 'activo', '2023-05-12', 'ordinario', 'password202', 'champion@email.com', 19),
-	(10, 'Josue Mateo', 'activo', '2025-04-26', 'centro', 'temporal', 'josue@gmail.com', 0),
 	(11, 'Alberto', 'estado', '2025-04-26', 'ordinario', '1234', 'josue@gmail.com', 23),
-	(12, 'Josue Mateo', 'activo', '2025-04-27', 'centro', 'temporal', 'prueba@gmail.com', 0),
 	(13, 'Erlantz', 'activo', '2025-04-27', 'centro', 'temporal', 'peperodrigues@gmail.com', 0),
-	(14, 'Aldo', 'estado', '2025-04-27', 'ordinario', '1234', 'peperodrigues@gmail.com', 12);
+	(14, 'Aldo', 'estado', '2025-04-27', 'ordinario', '1234', 'peperodrigues@gmail.com', 12),
+	(15, 'PruebaFallo', 'estado', '2025-04-27', 'ordinario', '1234', 'fallo@gmail.com', 21),
+	(16, 'Joni', 'estado', '2025-04-27', 'ordinario', '1234', 'peperodriges@gmail.com', 21),
+	(17, 'Prueba', 'estado', '2025-04-27', 'ordinario', '1234', 'peperodriges@gmail.com', 21),
+	(18, 'Pepe', 'activo', '2025-04-27', 'centro', 'temporal', 'peperodrigues@gmail.com', 0),
+	(19, 'Josue Fernandez', 'activo', '2025-04-27', 'centro', 'temporal', 'prueba@gmail.com', 0);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

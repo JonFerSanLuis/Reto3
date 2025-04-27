@@ -1,37 +1,24 @@
 package controller;
 
 import java.io.IOException;
-
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import service.CentroService;
-import service.SuscriptorService;
-
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class CookiesServlet
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/CookiesServlet")
+public class CookiesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	SuscriptorService suscriptorService;
-	CentroService centroService;
-	
-	public void init(ServletConfig config) throws ServletException {
-    	super.init(config);
-    	suscriptorService = new SuscriptorService();
-    	centroService = new CentroService();
-    }
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public CookiesServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -48,15 +35,18 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("usuario");
-		String password = request.getParameter("password");
-		
-		if (suscriptorService.login(username, password)) {
-			response.sendRedirect("perfil.jsp");
-		} else {
-			request.setAttribute("errorMensaje", "Error al iniciar sesion. Inténtalo de nuevo.");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+		String recuerdame = "0";
+		if (request.getParameter("recuerdame") != null) {
+			recuerdame = request.getParameter("recuerdame");
 		}
+		
+		Cookie cookie = new Cookie("recuerdame", recuerdame);
+		
+		cookie.setMaxAge(60*60*24*100);
+		
+		response.addCookie(cookie);
+		
+		response.sendRedirect("index.jsp");
 	}
 
 }
