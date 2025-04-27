@@ -76,7 +76,7 @@ public class AltaSuscriptor extends HttpServlet {
 		Centro centro = new Centro(0, nombre, responsable, tipoCentro, numAlumnos, email, numTelefono);
 		
 		if (centroService.addCentro(centro)) {  
-			response.sendRedirect("descargarJuego.jsp");
+			response.sendRedirect("comprarCupon.jsp");
 		} else {
 			
 			response.sendRedirect("error.jsp");
