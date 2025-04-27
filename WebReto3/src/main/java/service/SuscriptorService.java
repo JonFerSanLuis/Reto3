@@ -13,4 +13,8 @@ public class SuscriptorService {
 	public boolean addSuscriptor(Suscriptor suscriptor) {
 		return suscriptorDao.addSuscriptor(suscriptor);
 	}
+	
+	public boolean login(String usuario, String password) {
+		return suscriptorDao.login(usuario, password);
+	}
 }

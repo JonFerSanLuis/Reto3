@@ -42,6 +42,7 @@
                     <li><a href="CambiarIdioma?idioma=eu"><fmt:message key="idioma.euskera" /></a></li>
                 </ul>
             </div>
+            <a href="login.jsp" class="btn">Iniciar sesion</a>
             <a href="suscribirse.jsp" class="btn"><fmt:message key="menu.suscribirse" /></a>
             <a href="descargarJuego.jsp" class="btn"><fmt:message key="menu.descargar" /></a>
         </div>
@@ -59,7 +60,7 @@
             <div class="auth-forms">
                 <div class="auth-form active">
                     <h2 class="form-title"><fmt:message key="login.titulo" /></h2>
-                    <form action="LoginUsuario" method="post">
+                    <form action="LoginServlet" method="post">
                         <div class="form-group">
                             <label for="usuario"><fmt:message key="login.usuario" /></label>
                             <input type="text" id="usuario" name="usuario" placeholder="Nombre de usuario" required>

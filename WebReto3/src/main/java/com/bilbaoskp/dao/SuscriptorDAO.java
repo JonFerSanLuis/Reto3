@@ -234,27 +234,9 @@ public class SuscriptorDAO {
         suscriptor.setEdad(rs.getInt("edad"));
         return suscriptor;
     }
+    
+    public boolean login(String usuario, String password) {
+    	
+    	return false;
+    }
 }
-/*
- * public Suscriptor validarUsuario() { Suscriptor suscriptor = null; Connection
- * con = null; PreparedStatement ps = null; ResultSet rs = null;
- * 
- * try { con = AccesoBD.getConnection();
- * 
- * String sql = "SELECT * FROM suscriptores;"; ps = con.prepareStatement(sql);
- * 
- * rs = ps.executeQuery();
- * 
- * if (rs.next()) {
- * 
- * suscriptor = new Suscriptor();
- * suscriptor.setIdSuscriptor(rs.getInt("id_suscriptor"));
- * suscriptor.setUsername(rs.getString("username"));
- * suscriptor.setEstado(rs.getString("estado"));
- * suscriptor.setFechaAlta(rs.getDate("fecha_alta"));
- * suscriptor.setTipo(rs.getString("tipo"));
- * suscriptor.setPassword(rs.getString("password")); } } catch (SQLException e)
- * { e.printStackTrace(); } finally { AccesoBD.closeConnection(rs, ps, con); }
- * 
- * return suscriptor; }
- */
