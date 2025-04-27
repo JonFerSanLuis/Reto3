@@ -48,8 +48,15 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String username = request.getParameter("usuario");
+		String password = request.getParameter("password");
+		
+		if (suscriptorService.login(username, password)) {
+			response.sendRedirect("perfil.jsp");
+		} else {
+			request.setAttribute("errorMensaje", "Error al registrar suscriptor. Inténtalo de nuevo.");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+		}
 	}
 
 }
