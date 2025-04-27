@@ -7,16 +7,16 @@ public class Suscriptor {
     private String username;
     private String estado;
     private Date fechaAlta;
-    private String tipo; // "centro" o "ordinario"
-    private String password; // Para registro/login, no se almacena en la BD directamente
+    private String tipo;
+    private String password;
     private String correo;
     private int edad;
     
-
-	public Suscriptor() {
+    public Suscriptor() {
     }
-
-    public Suscriptor(String username, String estado, Date fechaAlta, String tipo, String password, String correo, int edad) {
+    
+    public Suscriptor(int idSuscriptor, String username, String estado, Date fechaAlta, String tipo, String password, String correo, int edad) {
+        this.idSuscriptor = idSuscriptor;
         this.username = username;
         this.estado = estado;
         this.fechaAlta = fechaAlta;
@@ -25,7 +25,6 @@ public class Suscriptor {
         this.correo = correo;
         this.edad = edad;
     }
-
 
     public int getIdSuscriptor() {
         return idSuscriptor;
@@ -74,27 +73,26 @@ public class Suscriptor {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public String getCorreo() {
-		return correo;
-	}
+        return correo;
+    }
 
-	public void setCorreo(String correo) {
-		this.correo = correo;
-	}
-	
-	public int getEdad() {
-		return edad;
-	}
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
 
-	public void setEdad(int edad) {
-		this.edad = edad;
-	}
+    public int getEdad() {
+        return edad;
+    }
 
-	@Override
-	public String toString() {
-		return "Suscriptor [idSuscriptor=" + idSuscriptor + ", username=" + username + ", estado=" + estado
-				+ ", fechaAlta=" + fechaAlta + ", tipo=" + tipo + ", password=" + password + ", correo=" + correo
-				+ ", edad=" + edad + "]";
-	}
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+    
+    @Override
+    public String toString() {
+        return "Suscriptor [idSuscriptor=" + idSuscriptor + ", username=" + username + ", estado=" + estado
+                + ", fechaAlta=" + fechaAlta + ", tipo=" + tipo + ", correo=" + correo + ", edad=" + edad + "]";
+    }
 }
