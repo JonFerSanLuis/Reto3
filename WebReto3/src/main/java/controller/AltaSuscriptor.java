@@ -55,7 +55,7 @@ public class AltaSuscriptor extends HttpServlet {
 		String correo = request.getParameter("correo");
 		int edad = Integer.valueOf(request.getParameter("edad"));
 		
-		Suscriptor suscriptor = new Suscriptor(username, estado, fecha_alta, tipo, password, correo, edad);
+		Suscriptor suscriptor = new Suscriptor(0, username, estado, fecha_alta, tipo, password, correo, edad);
 		
 		if(suscriptorService.addSuscriptor(suscriptor)) {
 			response.sendRedirect("comprarCupon.jsp");
@@ -67,13 +67,14 @@ public class AltaSuscriptor extends HttpServlet {
 	else if ("centro".equals(tipoRegistro)) {  
 		
 		String nombre = request.getParameter("nombre");
+		int codigo_centro = Integer.valueOf(request.getParameter("codigo"));
 		String responsable = request.getParameter("responsable");
 		String email = request.getParameter("email");
 		String tipoCentro = request.getParameter("tipo");
 		int numAlumnos = Integer.valueOf(request.getParameter("alumnos"));
 		String numTelefono = request.getParameter("telefono");
 		
-		Centro centro = new Centro(0, nombre, responsable, tipoCentro, numAlumnos, email, numTelefono);
+		Centro centro = new Centro(codigo_centro, nombre, responsable, tipoCentro, numAlumnos, email, numTelefono);
 		
 		if (centroService.addCentro(centro)) {  
 			response.sendRedirect("comprarCupon.jsp");

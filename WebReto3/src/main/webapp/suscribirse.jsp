@@ -73,6 +73,10 @@
                             <input type="text" id="centro-nombre" name="nombre" placeholder="Nombre del centro educativo" required>
                         </div>
                         <div class="form-group">
+                            <label for="centro-codigo"><fmt:message key="suscribirse.codigoCentro" /></label>
+                            <input type="text" id="centro-codigo" name="codigo" placeholder="Codigo del centro educativo" required>
+                        </div>
+                        <div class="form-group">
                             <label for="centro-responsable"><fmt:message key="suscribirse.responsable" /></label>
                             <input type="text" id="centro-responsable" name="responsable" placeholder="Nombre y apellidos" required>
                         </div>
