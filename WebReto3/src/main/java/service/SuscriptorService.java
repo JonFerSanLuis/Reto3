@@ -17,4 +17,8 @@ public class SuscriptorService {
 	public boolean login(String usuario, String password) {
 		return suscriptorDao.login(usuario, password);
 	}
+	
+	public Suscriptor getSuscriptorByNombreService(String nombre) {
+		return SuscriptorDAO.getSuscriptorByNombre(nombre);
+	}
 }

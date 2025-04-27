@@ -97,6 +97,31 @@ public class SuscriptorDAO {
         return suscriptor;
     }
     
+    public static Suscriptor getSuscriptorByNombre(String nombre) {
+        Suscriptor suscriptor = null;
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        try {
+            con = AccesoBD.getConnection();
+            String sql = "SELECT * FROM suscriptores WHERE username = ?";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, nombre);
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                suscriptor = mapResultSetToSuscriptor(rs);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            AccesoBD.closeConnection(rs, ps, con);
+        }
+        
+        return suscriptor;
+    }
+    
     public List<Suscriptor> getSuscriptoresByNombre(String nombre) {
         List<Suscriptor> suscriptores = new ArrayList<>();
         Connection con = null;
@@ -222,7 +247,7 @@ public class SuscriptorDAO {
         return result;
     }
     
-    private Suscriptor mapResultSetToSuscriptor(ResultSet rs) throws SQLException {
+    private static Suscriptor mapResultSetToSuscriptor(ResultSet rs) throws SQLException {
         Suscriptor suscriptor = new Suscriptor();
         suscriptor.setIdSuscriptor(rs.getInt("id_suscriptor"));
         suscriptor.setUsername(rs.getString("username"));

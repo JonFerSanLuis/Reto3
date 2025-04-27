@@ -23,13 +23,11 @@ public class CuponDAO {
 
 		try {
 			ps = con.prepareStatement(sql);
-
 			ps.setInt(1, cupon.getIdCupon());
 			ps.setInt(2, cupon.getIdSuscriptor());
 			ps.setString(3, cupon.getTipo());
 			ps.setDate(4, cupon.getFechaCaducidad());
-			ps.setString(5, cupon.getEstado());
-			
+			ps.setString(5, cupon.getEstado());			
 
 			if (ps.executeUpdate() > 0) {
 				return true;

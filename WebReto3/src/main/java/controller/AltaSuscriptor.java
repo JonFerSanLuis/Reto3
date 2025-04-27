@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 
 import java.sql.Date;
+import java.util.Calendar;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -12,9 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bilbaoskp.model.Centro;
+import com.bilbaoskp.model.Cupon;
 import com.bilbaoskp.model.Suscriptor;
 
 import service.CentroService;
+import service.CuponService;
 import service.SuscriptorService;
 
 
@@ -58,7 +61,26 @@ public class AltaSuscriptor extends HttpServlet {
 		Suscriptor suscriptor = new Suscriptor(0, username, estado, fecha_alta, tipo, password, correo, edad);
 		
 		if(suscriptorService.addSuscriptor(suscriptor)) {
-			response.sendRedirect("comprarCupon.jsp");
+			response.sendRedirect("index.jsp");
+			Cupon c = new Cupon(); 
+			
+			Suscriptor s = new Suscriptor();
+			SuscriptorService ser = new SuscriptorService();
+			s = ser.getSuscriptorByNombreService(username);				
+			c.setIdSuscriptor(s.getIdSuscriptor());
+			c.setTipo("Bullying");
+				
+			Date fechaActual = new Date(System.currentTimeMillis());
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(fechaActual);
+			calendar.add(Calendar.YEAR, 1);
+			Date fechaCaducidad = new Date(calendar.getTimeInMillis());;
+			
+			c.setEstado("disponible");
+			c.setFechaCaducidad(fechaCaducidad);
+			CuponService cup = new CuponService();
+			cup.asignarCuponService(c);
+			
     	} else {
     		request.setAttribute("errorMensaje", "Error al registrar suscriptor. Inténtalo de nuevo.");
             request.getRequestDispatcher("suscribirse.jsp").forward(request, response);
@@ -76,8 +98,28 @@ public class AltaSuscriptor extends HttpServlet {
 		
 		Centro centro = new Centro(codigo_centro, nombre, responsable, tipoCentro, numAlumnos, email, numTelefono);
 		
-		if (centroService.addCentro(centro)) {  
-			response.sendRedirect("comprarCupon.jsp");
+		if (centroService.addCentro(centro)) { 
+			Cupon c = new Cupon(); 
+			
+			for(int a = 0; a<numAlumnos;a++) {
+				Suscriptor s = new Suscriptor();
+				SuscriptorService ser = new SuscriptorService();
+				s = ser.getSuscriptorByNombreService(nombre);				
+				c.setIdSuscriptor(s.getIdSuscriptor());
+				c.setTipo("Bullying");
+				
+				Date fechaActual = new Date(System.currentTimeMillis());
+				Calendar calendar = Calendar.getInstance();
+			    calendar.setTime(fechaActual);
+			    calendar.add(Calendar.YEAR, 1);
+			    Date fechaCaducidad = new Date(calendar.getTimeInMillis());;
+			    
+			    c.setFechaCaducidad(fechaCaducidad);
+			    CuponService cup = new CuponService();
+			    cup.asignarCuponService(c);
+			}
+		
+			response.sendRedirect("index.jsp");
 		} else {
 			request.setAttribute("errorMensaje", "Error al registrar suscriptor. Inténtalo de nuevo.");
             request.getRequestDispatcher("suscribirse.jsp").forward(request, response);
