@@ -21,6 +21,16 @@
     <link rel="stylesheet" href="css/pages/suscribirse.css">
 </head>
 <body>
+	<%Cookie[] cookies = request.getCookies(); %>
+		<%String recuerdame = null; %>
+		<%if(cookies != null) { %>
+		<% 	for(Cookie cookie : cookies) { %>
+				<%if("recuerdame".equals(cookie.getName())) { %>
+					<%recuerdame = cookie.getValue(); %>
+					
+				<% } %>
+			<% } %>
+		<% } %>
     <header class="header">
         <div class="logo">
             <a href="index.jsp"><img src="img/logo.png" alt="Logo"></a>
@@ -69,6 +79,9 @@
                             <label for="password"><fmt:message key="login.password" /></label>
                             <input type="password" id="password" name="password" placeholder="Contraseña" required>
                         </div>
+						    <input type="checkbox" id="recuerdame" name="recuerdame">
+        				    <label for="recuerdame">Recuérdame</label>
+
                         <% 
                             String errorLogin = (String) request.getAttribute("errorLogin");
                             if (errorLogin != null) { 
