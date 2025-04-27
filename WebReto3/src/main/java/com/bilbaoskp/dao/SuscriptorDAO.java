@@ -272,11 +272,12 @@ public class SuscriptorDAO {
 			ps.setString(1, usuario);
 			ps.setString(2, password);
 			
-			if (ps.executeQuery() != null) {
-				return true;
-			} else {
-				return false;
-			}
+			rs = ps.executeQuery();
+			if (rs.next()) { 
+	            return true;
+	        } else {
+	            return false;
+	        }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

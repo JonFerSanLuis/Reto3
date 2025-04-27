@@ -54,7 +54,7 @@ public class LoginServlet extends HttpServlet {
 		if (suscriptorService.login(username, password)) {
 			response.sendRedirect("perfil.jsp");
 		} else {
-			request.setAttribute("errorMensaje", "Error al iniciar sesion. Int�ntalo de nuevo.");
+			request.setAttribute("errorMensaje", "Error al iniciar sesion. Intentalo de nuevo.");
             request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 	}

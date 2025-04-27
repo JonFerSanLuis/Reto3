@@ -69,14 +69,14 @@
                             <label for="password"><fmt:message key="login.password" /></label>
                             <input type="password" id="password" name="password" placeholder="Contraseña" required>
                         </div>
-                        <% 
-                            String errorLogin = (String) request.getAttribute("errorLogin");
-                            if (errorLogin != null) { 
-                        %>
-                            <p style="color: red;"><%= errorLogin %></p>
-                        <% 
-                            } 
-                        %>
+                       <%
+							String errorMensaje = (String) request.getAttribute("errorMensaje");
+							if (errorMensaje != null) { 
+							%>	
+							    <p style="color: red;"><%= errorMensaje %></p>
+							<%
+							} 
+							%>
                         <div class="form-submit">
                             <button type="submit"><fmt:message key="login.iniciarSesion" /></button>
                         </div>

@@ -110,6 +110,14 @@
                             <label for="centro-confirm"><fmt:message key="suscribirse.confirmPassword" /></label>
                             <input type="password" id="centro-confirm" name="confirm" placeholder="Confirma tu contraseña" required>
                         </div>
+                        <% 
+							    String errorMensaje = (String) request.getAttribute("errorMensaje");
+							    if (errorMensaje != null) { 
+							%>
+							    <p style="color: red;"><%= errorMensaje %></p>
+							<% 
+							    } 
+							%>
                         <div class="form-submit">
                             <button type="submit"><fmt:message key="suscribirse.registrarCentro" /></button>
                         </div>
@@ -140,6 +148,13 @@
                             <label for="individual-confirm"><fmt:message key="suscribirse.confirmPassword" /></label>
                             <input type="password" id="individual-confirm" name="confirm" placeholder="Confirma tu contraseña" required>
                         </div>
+                        <% 
+							    if (errorMensaje != null) { 
+							%>
+							    <p style="color: red;"><%= errorMensaje %></p>
+							<% 
+							    } 
+							%>
                         <div class="form-submit">
                             <button type="submit"><fmt:message key="suscribirse.registrarse" /></button>
                         </div>
