@@ -59,7 +59,7 @@
                 <div class="cupon-card">
                     <div class="cupon-header">
                         <h3 class="cupon-title"><fmt:message key="cupon.basico" /></h3>
-                        <div class="cupon-price">5€ <span>/unidad</span></div>
+                        <div class="cupon-price">1.50€ <span>/unidad</span></div>
                     </div>
                     <div class="cupon-body">
                         <ul class="cupon-features">
@@ -74,11 +74,11 @@
                 <div class="cupon-card">
                     <div class="cupon-header">
                         <h3 class="cupon-title"><fmt:message key="cupon.estandar" /></h3>
-                        <div class="cupon-price">12€ <span>/unidad</span></div>
+                        <div class="cupon-price">5€ <span>/unidad</span></div>
                     </div>
                     <div class="cupon-body">
                         <ul class="cupon-features">
-                            <li>3 intentos en el juego</li>
+                            <li>5 intentos en el juego</li>
                             <li>Participación en el ranking</li>
                             <li>Acceso a contenido premium</li>
                             <li>Soporte prioritario</li>
@@ -90,11 +90,11 @@
                 <div class="cupon-card">
                     <div class="cupon-header">
                         <h3 class="cupon-title"><fmt:message key="cupon.premium" /></h3>
-                        <div class="cupon-price">20€ <span>/unidad</span></div>
+                        <div class="cupon-price">12.50€ <span>/unidad</span></div>
                     </div>
                     <div class="cupon-body">
                         <ul class="cupon-features">
-                            <li>5 intentos en el juego</li>
+                            <li>12 intentos en el juego</li>
                             <li>Participación en el ranking</li>
                             <li>Acceso a todo el contenido</li>
                             <li>Soporte prioritario 24/7</li>
@@ -120,9 +120,9 @@
                         <label for="cupon"><fmt:message key="cupon.tipoCupon" /></label>
                         <select id="cupon" name="cupon" required>
                             <option value=""><fmt:message key="cupon.seleccioneCupon" /></option>
-                            <option value="basico"><fmt:message key="cupon.basico" /> - 5€</option>
-                            <option value="estandar"><fmt:message key="cupon.estandar" /> - 12€</option>
-                            <option value="premium"><fmt:message key="cupon.premium" /> - 20€</option>
+                            <option value="basico"><fmt:message key="cupon.basico" /> - 1.50€</option>
+                            <option value="estandar"><fmt:message key="cupon.estandar" /> - 5€</option>
+                            <option value="premium"><fmt:message key="cupon.premium" /> - 12.50€</option>
                         </select>
                     </div>
                     <div class="form-group">

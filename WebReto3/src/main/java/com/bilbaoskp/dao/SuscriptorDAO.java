@@ -236,28 +236,7 @@ public class SuscriptorDAO {
     }
     
     public boolean login(String usuario, String password) {
-    	Connection con = AccesoBD.getConnection();
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		
-		String sql = "SELECT username, password FROM suscriptores WHERE username = ? AND password = ?;";
-		
-		try {
-			ps = con.prepareStatement(sql);
-			ps.setString(1, usuario);
-			ps.setString(2, password);
-			
-			if (ps.executeQuery() != null) {
-				return true;
-			} else {
-				return false;
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			AccesoBD.closeConnection(rs, ps, con);
-		}
-		return false;
-	}
+    	
+    	return false;
+    }
 }
