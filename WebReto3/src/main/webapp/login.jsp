@@ -11,21 +11,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Educación Divertida</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <title><fmt:message key="login.titulo" /></title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/pages/pagina-principal.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/pages/suscribirse.css">
 </head>
 <body>
     <header class="header">
         <div class="logo">
-            <a href="index.jsp"><img src="img/logo.png" alt="Logo Educación Divertida"></a>
+            <a href="index.jsp"><img src="img/logo.png" alt="Logo"></a>
         </div>
-
         <nav class="nav-container">
             <ul class="nav-links">
                 <li><a href="informacion.jsp"><fmt:message key="menu.informacion" /></a></li>
@@ -36,31 +35,52 @@
 
         <div class="right-section">
             <div class="idiomas">
-                <img src="img/idiomas.png" alt="Idioma" class="icono-idioma">
+                <img src="img/idiomas.png" alt="Idiomas">
                 <ul class="idioma-menu">
                     <li><a href="CambiarIdioma?idioma=es"><fmt:message key="idioma.espanol" /></a></li>
                     <li><a href="CambiarIdioma?idioma=en"><fmt:message key="idioma.ingles" /></a></li>
                     <li><a href="CambiarIdioma?idioma=eu"><fmt:message key="idioma.euskera" /></a></li>
                 </ul>
             </div>
-            <a href="login.jsp" class="btn">Iniciar sesion</a>
             <a href="suscribirse.jsp" class="btn"><fmt:message key="menu.suscribirse" /></a>
             <a href="descargarJuego.jsp" class="btn"><fmt:message key="menu.descargar" /></a>
         </div>
     </header>
 
-    <div class="carousel-container">
-        <div class="carousel">
-            <img src="img/CasaExteriorImg.jpeg" alt="Niños aprendiendo jugando">
-            <img src="img/pixelcut-export (1).jpeg" alt="Clase interactiva">
-            <img src="img/pixelcut-export (2).jpeg" alt="Actividades educativas">
-        </div>
-        <div class="overlay-content">
-            <h1 class="Titulo_parrafo"><fmt:message key="index.titulo" /></h1>
-            <p><fmt:message key="index.descripcion" /></p>
-            <div class="boton-container">
-                <button><fmt:message key="index.aprendeMas" /></button>
-                <button><fmt:message key="index.disfrutaEnVivo" /></button>
+    <div class="main-content">
+        <div class="auth-container">
+            <div class="auth-image">
+                <div class="auth-image-content">
+                    <h2 class="auth-image-title"><fmt:message key="login.bienvenido" /></h2>
+                    <p class="auth-image-text"><fmt:message key="login.bienvenidoDesc" /></p>
+                    <a href="#" class="btn" style="margin-top: 15px; background-color: white; color: #333;"><fmt:message key="login.conoceMas" /></a>
+                </div>
+            </div>
+            <div class="auth-forms">
+                <div class="auth-form active">
+                    <h2 class="form-title"><fmt:message key="login.titulo" /></h2>
+                    <form action="LoginUsuario" method="post">
+                        <div class="form-group">
+                            <label for="usuario"><fmt:message key="login.usuario" /></label>
+                            <input type="text" id="usuario" name="usuario" placeholder="Nombre de usuario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password"><fmt:message key="login.password" /></label>
+                            <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                        </div>
+                        <% 
+                            String errorLogin = (String) request.getAttribute("errorLogin");
+                            if (errorLogin != null) { 
+                        %>
+                            <p style="color: red;"><%= errorLogin %></p>
+                        <% 
+                            } 
+                        %>
+                        <div class="form-submit">
+                            <button type="submit"><fmt:message key="login.iniciarSesion" /></button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -98,9 +118,6 @@
                     <p><i class="fas fa-phone"></i> <fmt:message key="footer.telefono" /></p>
                     <p><i class="fas fa-envelope"></i> <fmt:message key="footer.email" /></p>
                     <p><i class="fas fa-clock"></i> <fmt:message key="footer.horario" /></p>
-                </div>
-            </div>
-          <fmt:message key="footer.horario" /></p>
                 </div>
             </div>
         </div>

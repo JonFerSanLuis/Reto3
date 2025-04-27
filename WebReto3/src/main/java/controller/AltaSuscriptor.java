@@ -60,8 +60,8 @@ public class AltaSuscriptor extends HttpServlet {
 		if(suscriptorService.addSuscriptor(suscriptor)) {
 			response.sendRedirect("comprarCupon.jsp");
     	} else {
-    		
-    		response.sendRedirect("error.jsp");
+    		request.setAttribute("errorMensaje", "Error al registrar suscriptor. Inténtalo de nuevo.");
+            request.getRequestDispatcher("suscribirse.jsp").forward(request, response);
     	}
 	}
 	else if ("centro".equals(tipoRegistro)) {  
@@ -78,8 +78,8 @@ public class AltaSuscriptor extends HttpServlet {
 		if (centroService.addCentro(centro)) {  
 			response.sendRedirect("comprarCupon.jsp");
 		} else {
-			
-			response.sendRedirect("error.jsp");
+			request.setAttribute("errorMensaje", "Error al registrar suscriptor. Inténtalo de nuevo.");
+            request.getRequestDispatcher("suscribirse.jsp").forward(request, response);
 		}
 	} 
 	else {
