@@ -33,13 +33,13 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- CSS -->
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/pages/admin-usuarios.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/pages/admin-usuarios.css">
 </head>
 <body>
     <header class="header">
         <div class="logo">
-            <a href="index.jsp"><img src="img/logo.png" alt="Logo"></a>
+            <a href="index.jsp"><img src="../img/logo.png" alt="Logo"></a>
         </div>
         <nav class="nav-container">
             <ul class="nav-links">
@@ -52,7 +52,7 @@
 
         <div class="right-section">
             <div class="idiomas">
-                <img src="img/idiomas.png" alt="Idiomas">
+                <img src="../img/idiomas.png" alt="Idiomas">
                 <ul class="idioma-menu">
                     <li><a href="CambiarIdioma?idioma=es"><fmt:message key="idioma.espanol" /></a></li>
                     <li><a href="CambiarIdioma?idioma=en"><fmt:message key="idioma.ingles" /></a></li>
@@ -61,11 +61,16 @@
             </div>
             <a href="login.jsp" class="btn">Iniciar sesion</a>
             <a href="suscribirse.jsp" class="btn"><fmt:message key="menu.suscribirse" /></a>
-            <% if (session.getAttribute("username") != null) { %>
-		    	<a href="descargarJuego.jsp" class="btn"><fmt:message key="menu.descargar" /></a>
-			<% } else { %>
-			    <!-- No se muestra el botón descargar -->
-			<% } %>
+            <%   if (username != null) { 
+			%>
+			        <a href="private/descargarJuego.jsp" class="btn"><fmt:message key="menu.descargar" /></a>
+			<% 
+			    } else { 
+			%>
+			        <!-- No se muestra el botón descargar si no hay cookie -->
+			<% 
+			    } 
+			%>
         </div>
     </header>
 

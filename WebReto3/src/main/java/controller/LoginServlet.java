@@ -6,6 +6,7 @@ import java.net.URLEncoder;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -44,6 +45,11 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		Cookie cookie = new Cookie("usuario", null);  // Establece la cookie "usuario" con valor null
+	    cookie.setMaxAge(0);  // Expira la cookie
+	    cookie.setPath("/");  // Asegúrate de que la cookie sea eliminada en todo el dominio
+	    response.addCookie(cookie);  // Elimina la cookie
+	    response.sendRedirect("login.jsp");  // Redirige al login
 	}
 
 	/**
@@ -54,11 +60,17 @@ public class LoginServlet extends HttpServlet {
 	    String password = request.getParameter("password");
 	    
 	    if (suscriptorService.login(username, password)) {
-	        // Establecer el nombre de usuario en la sesión
-	        HttpSession session = request.getSession();  // Obtenemos la sesión
-	        session.setAttribute("username", username);  // Guardamos el nombre de usuario en la sesión
+	        // Crear una cookie con el nombre de usuario
+	        String usernameEncoded = URLEncoder.encode(username, "UTF-8");
+	        Cookie cookie = new Cookie("usuario", usernameEncoded);
+
+	        cookie.setPath("/");  // La cookie estará disponible para todo el dominio
 	        
-	        response.sendRedirect("perfil.jsp");
+	        // Agregar la cookie a la respuesta
+	        response.addCookie(cookie);
+	        
+	        // Redirigir al perfil
+	        response.sendRedirect("PerfilServlet");
 	    } else {
 	        request.setAttribute("errorMensaje", "Error al iniciar sesión. Inténtalo de nuevo.");
 	        request.getRequestDispatcher("login.jsp").forward(request, response);

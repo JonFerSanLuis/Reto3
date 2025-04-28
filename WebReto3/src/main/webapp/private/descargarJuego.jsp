@@ -33,28 +33,28 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- CSS -->
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/pages/descargar-juego.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/pages/descargar-juego.css">
     <!-- Asegurarse de que se incluya Font Awesome para los iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header class="header">
         <div class="logo">
-            <a href="index.jsp"><img src="img/logo.png" alt="Logo"></a>
+            <a href="../index.jsp"><img src="../img/logo.png" alt="Logo"></a>
         </div>
 
         <nav class="nav-container">
             <ul class="nav-links">
-                <li><a href="informacion.jsp"><fmt:message key="menu.informacion" /></a></li>
-                <li><a href="Ranking"><fmt:message key="menu.ranking" /></a></li>
-                <li><a href="comprarCupon.jsp"><fmt:message key="menu.comprarCupon" /></a></li>
+                <li><a href="../informacion.jsp"><fmt:message key="menu.informacion" /></a></li>
+                <li><a href="../Ranking"><fmt:message key="menu.ranking" /></a></li>
+                <li><a href="../comprarCupon.jsp"><fmt:message key="menu.comprarCupon" /></a></li>
             </ul>
         </nav>
 
         <div class="right-section">
             <div class="idiomas">
-                <img src="img/idiomas.png" alt="Idiomas">
+                <img src="../img/idiomas.png" alt="Idiomas">
                 <ul class="idioma-menu">
                     <li><a href="CambiarIdioma?idioma=es"><fmt:message key="idioma.espanol" /></a></li>
                     <li><a href="CambiarIdioma?idioma=en"><fmt:message key="idioma.ingles" /></a></li>
@@ -63,11 +63,6 @@
             </div>
             <a href="login.jsp" class="btn">Iniciar sesion</a>
             <a href="suscribirse.jsp" class="btn"><fmt:message key="menu.suscribirse" /></a>
-            <% if (session.getAttribute("username") != null) { %>
-		    <a href="descargarJuego.jsp" class="btn"><fmt:message key="menu.descargar" /></a>
-			<% } else { %>
-			    <!-- No se muestra el botón descargar -->
-			<% } %>
         </div>
     </header>
 

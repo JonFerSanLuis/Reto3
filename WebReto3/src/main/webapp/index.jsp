@@ -57,11 +57,16 @@
             </div>
             <a href="login.jsp" class="btn">Iniciar sesion</a>
             <a href="suscribirse.jsp" class="btn"><fmt:message key="menu.suscribirse" /></a>
-            <% if (session.getAttribute("username") != null) { %>
-		    <a href="descargarJuego.jsp" class="btn"><fmt:message key="menu.descargar" /></a>
-			<% } else { %>
-			    <!-- No se muestra el botón descargar -->
-			<% } %>
+           	<%   if (username != null) { 
+			%>
+			        <a href="private/descargarJuego.jsp" class="btn"><fmt:message key="menu.descargar" /></a>
+			<% 
+			    } else { 
+			%>
+			        <!-- No se muestra el botón descargar si no hay cookie -->
+			<% 
+			    } 
+			%>
         </div>
     </header>
 
@@ -76,7 +81,11 @@
             <p><fmt:message key="index.descripcion" /></p>
            <div class="boton-container">
     <a href="informacion.jsp" class="btn-custom"><fmt:message key="index.sobreNosotros" /></a>
-    <a href="descargarJuego.jsp" class="btn-custom"><fmt:message key="index.jugar" /></a>
+    <% if (session.getAttribute("username") != null) { %>
+		    <a href="private/descargarJuego.jsp" class="btn-custom"><fmt:message key="index.jugar" /></a>
+			<% } else { %>
+			    <!-- No se muestra el botón descargar -->
+			<% } %>
 </div>
 
         </div>
