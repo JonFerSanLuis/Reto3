@@ -69,6 +69,9 @@ public class LoginServlet extends HttpServlet {
 	        // Agregar la cookie a la respuesta
 	        response.addCookie(cookie);
 	        
+	        HttpSession session = request.getSession(true); // Crea una nueva sesión
+	        session.setAttribute("username", username);
+	        
 	        // Redirigir al perfil
 	        response.sendRedirect("PerfilServlet");
 	    } else {
