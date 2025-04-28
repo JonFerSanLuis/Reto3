@@ -98,6 +98,7 @@
                                 <th>TIPO</th>
                                 <th>FECHA CADUCIDAD</th>
                                 <th>ESTADO</th>
+                                <th>BORRAR</th>
                             </tr>
                         </thead>
                         <tbody>
