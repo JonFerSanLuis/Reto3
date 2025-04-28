@@ -2,6 +2,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<%
+    Cookie[] cookies = request.getCookies();
+    String username = null;
+
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            if ("usuario".equals(cookie.getName())) {
+                username = java.net.URLDecoder.decode(cookie.getValue(), "UTF-8");
+                break;
+            }
+        }
+    }
+%>
+
 <c:set var="idioma" value="${not empty sessionScope.idioma ? sessionScope.idioma : 'es'}" scope="session" />
 <fmt:setLocale value="${idioma}" />
 <fmt:setBundle basename="resources.messages" />
@@ -43,7 +57,11 @@
             </div>
             <a href="login.jsp" class="btn">Iniciar sesion</a>
             <a href="suscribirse.jsp" class="btn"><fmt:message key="menu.suscribirse" /></a>
-            <a href="descargarJuego.jsp" class="btn"><fmt:message key="menu.descargar" /></a>
+            <% if (session.getAttribute("username") != null) { %>
+		    <a href="descargarJuego.jsp" class="btn"><fmt:message key="menu.descargar" /></a>
+			<% } else { %>
+			    <!-- No se muestra el botón descargar -->
+			<% } %>
         </div>
     </header>
 

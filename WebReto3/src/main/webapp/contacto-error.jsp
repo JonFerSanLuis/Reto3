@@ -1,4 +1,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%
+    Cookie[] cookies = request.getCookies();
+    String username = null;
+
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            if ("usuario".equals(cookie.getName())) {
+                username = java.net.URLDecoder.decode(cookie.getValue(), "UTF-8");
+                break;
+            }
+        }
+    }
+%>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

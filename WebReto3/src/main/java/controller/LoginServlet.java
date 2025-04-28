@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -8,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import service.CentroService;
 import service.SuscriptorService;
@@ -48,24 +50,19 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("usuario");
-		String password = request.getParameter("password");
-		
-		if (suscriptorService.login(username, password)) {
-			// Crear una cookie con el nombre de usuario
-	        javax.servlet.http.Cookie cookie = new javax.servlet.http.Cookie("usuario", username);
-
-	        cookie.setMaxAge(24 * 60 * 60);
-
-	        cookie.setPath("/");
-
-	        response.addCookie(cookie);
-			
-			response.sendRedirect("perfil.jsp");
-		} else {
-			request.setAttribute("errorMensaje", "Error al iniciar sesion. Intentalo de nuevo.");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-		}
+	    String username = request.getParameter("usuario");
+	    String password = request.getParameter("password");
+	    
+	    if (suscriptorService.login(username, password)) {
+	        // Establecer el nombre de usuario en la sesión
+	        HttpSession session = request.getSession();  // Obtenemos la sesión
+	        session.setAttribute("username", username);  // Guardamos el nombre de usuario en la sesión
+	        
+	        response.sendRedirect("perfil.jsp");
+	    } else {
+	        request.setAttribute("errorMensaje", "Error al iniciar sesión. Inténtalo de nuevo.");
+	        request.getRequestDispatcher("login.jsp").forward(request, response);
+	    }
 	}
 
 }
