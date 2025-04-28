@@ -109,17 +109,24 @@
                                 </c:when>
                                 <c:otherwise>
                                     <c:forEach var="cupon" items="${listaCupones}">
-                                        <tr>
-                                            <td>${cupon.idCupon}</td>
-                                            <td>${cupon.tipo}</td>
-                                            <td><fmt:formatDate value="${cupon.fechaCaducidad}" pattern="dd/MM/yyyy" /></td>
-                                            <td>
-                                                <span class="status-badge ${cupon.estado == 'disponible' ? 'status-active' : 'status-inactive'}">
-                                                    ${cupon.estado}
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
+										    <tr>
+										        <td>${cupon.idCupon}</td>
+										        <td>${cupon.tipo}</td>
+										        <td><fmt:formatDate value="${cupon.fechaCaducidad}" pattern="dd/MM/yyyy" /></td>
+										        <td>
+										            <span class="status-badge ${cupon.estado == 'disponible' ? 'status-active' : 'status-inactive'}">
+										                ${cupon.estado}
+										            </span>
+										        </td>
+										        <td>
+										            <!-- Formulario para borrar el cupón -->
+										            <form action="BorrarCuponServlet" method="post">
+										                <input type="hidden" name="idCupon" value="${cupon.idCupon}">
+										                <button type="submit" class="btn btn-danger">Borrar</button>
+										            </form>
+										        </td>
+										    </tr>
+										</c:forEach>
                                 </c:otherwise>
                             </c:choose>
                         </tbody>

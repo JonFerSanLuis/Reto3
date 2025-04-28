@@ -159,5 +159,33 @@ public class CuponDAO {
 	    return cupones;
 	}
 
+	public boolean eliminarCupon(int idCupon) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        boolean result = false;
+        
+        String sql = "DELETE FROM cupones WHERE id_cupon = ?";
+        
+        try {
+            con = AccesoBD.getConnection();  // Obtener la conexión
+            ps = con.prepareStatement(sql);  // Preparar la consulta
+            ps.setInt(1, idCupon);  // Establecer el parámetro para el ID del cupón
+
+            int rowsAffected = ps.executeUpdate();  // Ejecutar la consulta y obtener el número de filas afectadas
+
+            // Si se eliminó al menos un registro, la eliminación fue exitosa
+            if (rowsAffected > 0) {
+                result = true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();  // En caso de error, imprimir la traza de la excepción
+        } finally {
+            // Cerrar la conexión y los recursos
+            AccesoBD.closeConnection(null, ps, con);
+        }
+
+        return result;  // Devolver el resultado de la operación
+    }
 	
 }

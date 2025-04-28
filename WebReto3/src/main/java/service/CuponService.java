@@ -26,4 +26,9 @@ public class CuponService {
 		CuponDAO c = new CuponDAO();
 		return c.obtenerCuponesPorSuscriptor(username);
 	}
+	
+	public boolean eliminarCupon(int idCupon) {
+		CuponDAO c = new CuponDAO();
+        return c.eliminarCupon(idCupon);  // Llama al DAO para eliminar el cupón
+    }
 }
