@@ -133,6 +133,31 @@ public class CuponDAO {
         return cupones;
     }
 
-	
+	public List<Cupon> obtenerCuponesPorSuscriptor(String username) {
+	    List<Cupon> cupones = new ArrayList<>();
+	    Connection con = null;
+	    PreparedStatement ps = null;
+	    ResultSet rs = null;
+	    
+	    try {
+	        con = AccesoBD.getConnection(); // Obtiene la conexión usando AccesoBD
+	        String sql = "SELECT * FROM cupones WHERE id_suscriptor = (SELECT id_suscriptor FROM suscriptores WHERE username = ?)";
+	        ps = con.prepareStatement(sql);
+	        ps.setString(1, username); // Establece el valor del parámetro
+	        rs = ps.executeQuery();
+	        
+	        while (rs.next()) {
+	            Cupon cupon = mapResultSetToCupon(rs); // Mapea el ResultSet a un objeto Cupon
+	            cupones.add(cupon); // Agrega el cupon a la lista
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        AccesoBD.closeConnection(rs, ps, con); // Cierra la conexión utilizando AccesoBD
+	    }
+	    
+	    return cupones;
+	}
+
 	
 }

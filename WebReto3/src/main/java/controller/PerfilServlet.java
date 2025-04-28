@@ -7,35 +7,44 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bilbaoskp.model.Cupon;
+
+import service.CuponService;
+import service.SuscriptorService;
+
 /**
  * Servlet implementation class PerfilServlet
  */
 @WebServlet("/PerfilServlet")
 public class PerfilServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PerfilServlet() {
-        super();
-        // TODO Auto-generated constructor stub
+    private static final long serialVersionUID = 1L;
+    
+    CuponService cuponService;
+    SuscriptorService suscriptorService;
+
+    public void init() {
+        cuponService = new CuponService();
+        suscriptorService = new SuscriptorService();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Obtener el nombre de usuario desde la sesión
+        String username = (String) request.getSession().getAttribute("username");
+        
+        if (username != null) {
+            // Obtener los cupones del suscriptor
+            java.util.List<Cupon> cupones = cuponService.getCuponesPorSuscriptor(username);
+            request.setAttribute("listaCupones", cupones);
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+            // Redirigir a la JSP del perfil
+            request.getRequestDispatcher("perfil.jsp").forward(request, response);
+        } else {
+            // Si el usuario no está en la sesión, redirigir al login
+            response.sendRedirect("login.jsp");
+        }
+    }
 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
 }

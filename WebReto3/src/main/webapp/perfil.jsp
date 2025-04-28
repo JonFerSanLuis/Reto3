@@ -46,7 +46,6 @@
                 <li><a href="informacion.jsp"><fmt:message key="menu.informacion" /></a></li>
                 <li><a href="Ranking"><fmt:message key="menu.ranking" /></a></li>
                 <li><a href="comprarCupon.jsp"><fmt:message key="menu.comprarCupon" /></a></li>
-                <li><a href="admin-usuarios.jsp" class="active"><fmt:message key="admin.titulo" /></a></li>
             </ul>
         </nav>
 
@@ -61,21 +60,14 @@
             </div>
             <a href="login.jsp" class="btn">Iniciar sesion</a>
             <a href="suscribirse.jsp" class="btn"><fmt:message key="menu.suscribirse" /></a>
-            <%   if (username != null) { 
-			%>
-			        <a href="private/descargarJuego.jsp" class="btn"><fmt:message key="menu.descargar" /></a>
-			<% 
-			    } else { 
-			%>
-			        <!-- No se muestra el botón descargar si no hay cookie -->
-			<% 
-			    } 
-			%>
+            <% if (session.getAttribute("username") != null) { %>
+		    <a href="descargarJuego.jsp" class="btn"><fmt:message key="menu.descargar" /></a>
+			<% } %>
         </div>
     </header>
 
     <div class="main-content">
-        <h1 class="page-title"><fmt:message key="admin.titulo" /></h1>
+        <h1 class="page-title">Perfil del suscriptor</h1>
 
         <!-- Mensajes de éxito o error -->
         <c:if test="${not empty sessionScope.mensaje}">
@@ -93,69 +85,38 @@
 
         <div class="admin-container">
             <section class="search-section">
-                <h2 class="search-title"><fmt:message key="admin.buscarUsuario" /></h2>
-                <form class="search-form" action="AdminUsuarios" method="get">
-                    <div class="search-inputs">
-                        <div class="search-field">
-                            <label for="busqueda-id">ID:</label>
-                            <input type="text" id="busqueda-id" name="id" placeholder="ID" value="${param.id}">
-                        </div>
-                        <div class="search-field">
-                            <label for="busqueda-nombre"><fmt:message key="admin.nombre" />:</label>
-                            <input type="text" id="busqueda-nombre" name="nombre" placeholder="<fmt:message key="admin.nombre" />" value="${param.nombre}">
-                        </div>
-                    </div>
-                    <button type="submit" class="search-button"><fmt:message key="admin.buscar" /></button>
-                </form>
+                <h2 class="search-title">Nombre usuario: ${username}</h2>
             </section>
 
             <section class="users-table-section">
-                <h2 class="users-table-title"><fmt:message key="admin.listaUsuarios" /></h2>
+                <h2 class="users-table-title">Lista de cupones</h2>
                 <div class="table-container">
                     <table class="users-table">
                         <thead>
                             <tr>
-                                <th><fmt:message key="admin.id" /></th>
-                                <th><fmt:message key="admin.nombre" /></th>
-                                <th><fmt:message key="admin.email" /></th>
-                                <th><fmt:message key="admin.tipo" /></th>
-                                <th><fmt:message key="admin.estado" /></th>
-                                <th><fmt:message key="admin.fechaAlta" /></th>
-                                <th><fmt:message key="admin.edad" /></th>
-                                <th><fmt:message key="admin.acciones" /></th>
+                                <th>ID CUPON</th>
+                                <th>TIPO</th>
+                                <th>FECHA CADUCIDAD</th>
+                                <th>ESTADO</th>
                             </tr>
                         </thead>
                         <tbody>
                             <c:choose>
-                                <c:when test="${empty listaUsuarios}">
+                                <c:when test="${empty listaCupones}">
                                     <tr>
-                                        <td colspan="8" class="no-results"><fmt:message key="admin.noResultados" /></td>
+                                        <td colspan="4" class="no-results"><fmt:message key="admin.noResultados" /></td>
                                     </tr>
                                 </c:when>
                                 <c:otherwise>
-                                    <c:forEach var="usuario" items="${listaUsuarios}">
+                                    <c:forEach var="cupon" items="${listaCupones}">
                                         <tr>
-                                            <td>${usuario.idSuscriptor}</td>
-                                            <td>${usuario.username}</td>
-                                            <td>${usuario.correo}</td>
-                                            <td>${usuario.tipo}</td>
+                                            <td>${cupon.idCupon}</td>
+                                            <td>${cupon.tipo}</td>
+                                            <td><fmt:formatDate value="${cupon.fechaCaducidad}" pattern="dd/MM/yyyy" /></td>
                                             <td>
-                                                <span class="status-badge ${usuario.estado == 'activo' ? 'status-active' : 'status-inactive'}">
-                                                    ${usuario.estado}
+                                                <span class="status-badge ${cupon.estado == 'disponible' ? 'status-active' : 'status-inactive'}">
+                                                    ${cupon.estado}
                                                 </span>
-                                            </td>
-                                            <td><fmt:formatDate value="${usuario.fechaAlta}" pattern="dd/MM/yyyy" /></td>
-                                            <td>${usuario.edad}</td>
-                                            <td class="actions">
-                                                <a href="AdminUsuarios?action=editar&id=${usuario.idSuscriptor}" class="action-btn edit-btn" title="<fmt:message key="admin.editar" />">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-                                                <button onclick="confirmarEliminar(${usuario.idSuscriptor}, '${usuario.username}')" class="action-btn delete-btn" title="<fmt:message key="admin.eliminar" />">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </button>
-                                                <a href="AdminUsuarios?action=detalles&id=${usuario.idSuscriptor}" class="action-btn details-btn" title="<fmt:message key="admin.detalles" />">
-                                                    <i class="fas fa-info-circle"></i>
-                                                </a>
                                             </td>
                                         </tr>
                                     </c:forEach>
@@ -165,23 +126,6 @@
                     </table>
                 </div>
             </section>
-        </div>
-    </div>
-
-    <!-- Modal de confirmación para eliminar usuario -->
-    <div id="modal-eliminar" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2><fmt:message key="admin.confirmarEliminacion" /></h2>
-            <p><fmt:message key="admin.confirmarEliminarUsuario" /> <span id="nombre-usuario"></span>?</p>
-            <div class="modal-buttons">
-                <button id="btn-cancelar" class="btn-secondary"><fmt:message key="admin.cancelar" /></button>
-                <form id="form-eliminar" action="AdminUsuarios" method="post">
-                    <input type="hidden" name="action" value="eliminar">
-                    <input type="hidden" id="id-eliminar" name="id" value="">
-                    <button type="submit" class="btn-danger"><fmt:message key="admin.eliminar" /></button>
-                </form>
-            </div>
         </div>
     </div>
 
@@ -230,39 +174,5 @@
         </div>
     </footer>
 
-    <script>
-        // Script para el menú de idiomas
-        document.addEventListener('DOMContentLoaded', function() {
-            const idiomas = document.querySelector('.idiomas');
-            document.addEventListener('click', function(e) {
-                if (idiomas.contains(e.target)) {
-                    idiomas.classList.toggle('activo');
-                } else {
-                    idiomas.classList.remove('activo');
-                }
-            });
-        });
-
-        // Script para el modal de confirmación de eliminación
-        function confirmarEliminar(id, nombre) {
-            document.getElementById('id-eliminar').value = id;
-            document.getElementById('nombre-usuario').textContent = nombre;
-            document.getElementById('modal-eliminar').style.display = 'flex';
-        }
-
-        document.querySelector('.close-modal').addEventListener('click', function() {
-            document.getElementById('modal-eliminar').style.display = 'none';
-        });
-
-        document.getElementById('btn-cancelar').addEventListener('click', function() {
-            document.getElementById('modal-eliminar').style.display = 'none';
-        });
-
-        window.addEventListener('click', function(event) {
-            if (event.target == document.getElementById('modal-eliminar')) {
-                document.getElementById('modal-eliminar').style.display = 'none';
-            }
-        });
-    </script>
 </body>
 </html>

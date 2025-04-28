@@ -21,5 +21,9 @@ public class CuponService {
 		CuponDAO c = new CuponDAO();
 		return c.getCuponesByIdSus(id);
 	}
-
+	
+	public List<Cupon> getCuponesPorSuscriptor(String username){
+		CuponDAO c = new CuponDAO();
+		return c.obtenerCuponesPorSuscriptor(username);
+	}
 }
