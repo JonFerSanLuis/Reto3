@@ -59,8 +59,26 @@
                     <li><a href="CambiarIdioma?idioma=eu"><fmt:message key="idioma.euskera" /></a></li>
                 </ul>
             </div>
-            <a href="login.jsp" class="btn">Iniciar sesion</a>
-            <a href="suscribirse.jsp" class="btn"><fmt:message key="menu.suscribirse" /></a>
+            <%   if (username != null) { 
+			%>
+			        <a href="perfil.jsp" class="btn">Perfil</a>
+			<% 
+			    } else { 
+			%>
+			        <a href="login.jsp" class="btn">Iniciar sesión</a>
+			<% 
+			    } 
+			%>
+			<%   if (username != null) { 
+			%>
+			        <!-- No se muestra el botón descargar si no hay cookie -->
+			<% 
+			    } else { 
+			%>
+			        <a href="suscribirse.jsp" class="btn"><fmt:message key="menu.suscribirse" /></a>
+			<% 
+			    } 
+			%>
             <%   if (username != null) { 
 			%>
 			        <a href="private/descargarJuego.jsp" class="btn"><fmt:message key="menu.descargar" /></a>
@@ -127,50 +145,49 @@
                     </div>
                 </div>
             </div>
-
-            <div id="payment-form" class="payment-form">
-                <h2 class="form-title"><fmt:message key="cupon.infoPago" /></h2>
-                <form>
-                    <div class="form-group">
-                        <label for="nombre"><fmt:message key="cupon.nombreCompleto" /></label>
-                        <input type="text" id="nombre" name="nombre" placeholder="Nombre y apellidos" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email"><fmt:message key="cupon.email" /></label>
-                        <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="cupon"><fmt:message key="cupon.tipoCupon" /></label>
-                        <select id="cupon" name="cupon" required>
-                            <option value=""><fmt:message key="cupon.seleccioneCupon" /></option>
-                            <option value="basico"><fmt:message key="cupon.basico" /> - 1.50€</option>
-                            <option value="estandar"><fmt:message key="cupon.estandar" /> - 5€</option>
-                            <option value="premium"><fmt:message key="cupon.premium" /> - 12.50€</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="cantidad"><fmt:message key="cupon.cantidad" /></label>
-                        <input type="number" id="cantidad" name="cantidad" min="1" value="1" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="tarjeta"><fmt:message key="cupon.numeroTarjeta" /></label>
-                        <input type="text" id="tarjeta" name="tarjeta" placeholder="1234 5678 9012 3456" required>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="caducidad"><fmt:message key="cupon.fechaCaducidad" /></label>
-                            <input type="text" id="caducidad" name="caducidad" placeholder="MM/AA" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="cvv"><fmt:message key="cupon.cvv" /></label>
-                            <input type="text" id="cvv" name="cvv" placeholder="123" required>
-                        </div>
-                    </div>
-                    <div class="form-submit">
-                        <button type="submit"><fmt:message key="cupon.completarCompra" /></button>
-                    </div>
-                </form>
-            </div>
+			  <div id="payment-form" class="payment-form">
+			    <h2 class="form-title"><fmt:message key="cupon.infoPago" /></h2>
+			    <form action="/comprar" method="POST">
+			        <div class="form-group">
+			            <label for="nombre"><fmt:message key="cupon.nombreCompleto" /></label>
+			            <input type="text" id="nombre" name="nombre" placeholder="Nombre y apellidos" required>
+			        </div>
+			        <div class="form-group">
+			            <label for="email"><fmt:message key="cupon.email" /></label>
+			            <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+			        </div>
+			        <div class="form-group">
+			            <label for="cupon"><fmt:message key="cupon.tipoCupon" /></label>
+			            <select id="cupon" name="cupon" required>
+			                <option value=""><fmt:message key="cupon.seleccioneCupon" /></option>
+			                <option value="Cupón Basico"><fmt:message key="cupon.basico" /> - 1.50€</option>
+			                <option value="Pack Estándar"><fmt:message key="cupon.estandar" /> - 5€</option>
+			                <option value="Pack Premium"><fmt:message key="cupon.premium" /> - 12.50€</option>
+			            </select>
+			        </div>
+			        <div class="form-group">
+			            <label for="cantidad"><fmt:message key="cupon.cantidad" /></label>
+			            <input type="number" id="cantidad" name="cantidad" min="1" value="1" required>
+			        </div>
+			        <div class="form-group">
+			            <label for="tarjeta"><fmt:message key="cupon.numeroTarjeta" /></label>
+			            <input type="text" id="tarjeta" name="tarjeta" placeholder="1234 5678 9012 3456" required>
+			        </div>
+			        <div class="form-row">
+			            <div class="form-group">
+			                <label for="caducidad"><fmt:message key="cupon.fechaCaducidad" /></label>
+			                <input type="text" id="caducidad" name="caducidad" placeholder="MM/AA" required>
+			            </div>
+			            <div class="form-group">
+			                <label for="cvv"><fmt:message key="cupon.cvv" /></label>
+			                <input type="text" id="cvv" name="cvv" placeholder="123" required>
+			            </div>
+			        </div>
+			        <div class="form-submit">
+			            <button type="submit"><fmt:message key="cupon.completarCompra" /></button>
+			        </div>
+			    </form>
+			</div>
         </div>
     </div>
 

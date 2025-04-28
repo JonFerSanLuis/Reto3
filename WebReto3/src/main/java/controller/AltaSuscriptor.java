@@ -99,7 +99,8 @@ public class AltaSuscriptor extends HttpServlet {
 		Centro centro = new Centro(codigo_centro, nombre, responsable, tipoCentro, numAlumnos, email, numTelefono);
 		
 		if (centroService.addCentro(centro)) { 
-            // Solo registrar al responsable
+			for(int a =0;a<numAlumnos;a++) {
+				// Solo registrar al responsable
             Suscriptor s = new Suscriptor();
             s.setUsername(responsable); // Nombre del responsable
             s.setEstado("estado");
@@ -128,7 +129,8 @@ public class AltaSuscriptor extends HttpServlet {
 
             CuponService cup = new CuponService();
             cup.asignarCuponService(c);
-
+			}
+            
             response.sendRedirect("index.jsp"); // Redirigir al index
         }
 		else {

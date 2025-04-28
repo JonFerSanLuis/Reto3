@@ -59,11 +59,19 @@
                     <li><a href="CambiarIdioma?idioma=eu"><fmt:message key="idioma.euskera" /></a></li>
                 </ul>
             </div>
-            <a href="login.jsp" class="btn">Iniciar sesion</a>
-            <a href="suscribirse.jsp" class="btn"><fmt:message key="menu.suscribirse" /></a>
             <%   if (username != null) { 
 			%>
-			        <a href="private/descargarJuego.jsp" class="btn"><fmt:message key="menu.descargar" /></a>
+			        <a href="../perfil.jsp" class="btn">Perfil</a>
+			<% 
+			    } else { 
+			%>
+			        <a href="../login.jsp" class="btn">Iniciar sesión</a>
+			<% 
+			    } 
+			%>
+            <%   if (username != null) { 
+			%>
+			        <a href="descargarJuego.jsp" class="btn"><fmt:message key="menu.descargar" /></a>
 			<% 
 			    } else { 
 			%>
