@@ -23,3 +23,32 @@
 2025-04-28 02:38:08,965 [Worker-3: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
 2025-04-28 03:00:49,778 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
 2025-04-28 04:44:38,297 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2025-05-19 10:09:18,829 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2025-05-19 10:41:39,866 [Worker-42: Auto share git projects] WARN  org.eclipse.jgit.util.FS_Win32 - Exception caught during execution of command '[bash, --login, -c, which git]' in 'C:\Users\Alumno', return code '1', error message '<3>WSL (10) ERROR: CreateProcessParseCommon:711: Failed to translate C:\Users\Alumno
+<3>WSL (10) ERROR: CreateProcessParseCommon:757: getpwuid(0) failed 2
+<3>WSL (10) ERROR: UtilTranslatePathList:2866: Failed to translate C:\EntornoProgramac\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin\server
+<3>WSL (10) ERROR: UtilTranslatePathList:2866: Failed to translate C:\EntornoProgramac\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.2.v20210201-0955\jre\bin
+<3>WSL (10) ERROR: UtilTranslatePathList:2866: Failed to translate C:\Program Files (x86)\Common Files\Oracle\Java\javapath
+<3>WSL (10) ERROR: UtilTranslatePathList:2866: Failed to translate C:\Windows\system32
+<3>WSL (10) ERROR: UtilTranslatePathList:2866: Failed to translate C:\Windows
+<3>WSL (10) ERROR: UtilTranslatePathList:2866: Failed to translate C:\Windows\System32\Wbem
+<3>WSL (10) ERROR: UtilTranslatePathList:2866: Failed to translate C:\Windows\System32\WindowsPowerShell\v1.0\
+<3>WSL (10) ERROR: UtilTranslatePathList:2866: Failed to translate C:\Windows\System32\OpenSSH\
+<3>WSL (10) ERROR: UtilTranslatePathList:2866: Failed to translate C:\Program Files (x86)\Windows Live\Shared
+<3>WSL (10) ERROR: UtilTranslatePathList:2866: Failed to translate C:\xampp\php
+<3>WSL (10) ERROR: UtilTranslatePathList:2866: Failed to translate C:\ProgramData\ComposerSetup\bin
+<3>WSL (10) ERROR: UtilTranslatePathList:2866: Failed to translate C:\Program Files\PuTTY\
+<3>WSL (10) ERROR: UtilTranslatePathList:2866: Failed to translate C:\HashiCorp\Vagrant\bin
+<3>WSL (10) ERROR: UtilTranslatePathList:2866: Failed to translate C:\Program Files\dotnet\
+<3>WSL (10) ERROR: UtilTranslatePathList:2866: Failed to translate C:\Program Files\nodejs\
+<3>WSL (10) ERROR: UtilTranslatePathList:2866: Failed to translate C:\Program Files\Docker\Docker\resources\bin
+<3>WSL (10) ERROR: UtilTranslatePathList:2866: Failed to translate C:\ProgramData\chocolatey\bin
+<3>WSL (10) ERROR: UtilTranslatePathList:2866: Failed to translate C:\Users\Alumno\AppData\Local\Microsoft\WindowsApps
+<3>WSL (10) ERROR: UtilTranslatePathList:2866: Failed to translate C:\Users\Alumno\AppData\Roaming\Composer\vendor\bin
+<3>WSL (10) ERROR: UtilTranslatePathList:2866: Failed to translate C:\Users\Alumno\AppData\Roaming\npm
+<3>WSL (10) ERROR: UtilTranslatePathList:2866: Failed to translate C:\Program Files\nodejs
+<3>WSL (10) ERROR: UtilTranslatePathList:2866: Failed to translate C:\EntornoProgramac\eclipse
+<3>WSL (10) ERROR: CreateProcessEntryCommon:334: getpwuid(0) failed 2
+<3>WSL (10) ERROR: CreateProcessEntryCommon:505: execvpe /bin/bash failed 2
+<3>WSL (10) ERROR: CreateProcessEntryCommon:508: Create process not expected to return
+'
