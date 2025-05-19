@@ -21,4 +21,10 @@ public class SuscriptorService {
 	public Suscriptor getSuscriptorByNombreService(String nombre) {
 		return SuscriptorDAO.getSuscriptorByNombre(nombre);
 	}
+	
+	// Método para verificar si un usuario es administrador
+	public boolean isAdmin(String username) {
+		Suscriptor suscriptor = SuscriptorDAO.getSuscriptorByNombre(username);
+		return suscriptor != null && "admin".equals(suscriptor.getTipo());
+	}
 }

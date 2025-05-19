@@ -60,6 +60,9 @@ public class LoginServlet extends HttpServlet {
 	    String password = request.getParameter("password");
 	    
 	    if (suscriptorService.login(username, password)) {
+	        // Verificar si el usuario es administrador
+	        boolean isAdmin = suscriptorService.isAdmin(username);
+	        
 	        // Crear una cookie con el nombre de usuario
 	        String usernameEncoded = URLEncoder.encode(username, "UTF-8");
 	        Cookie cookie = new Cookie("usuario", usernameEncoded);
@@ -71,6 +74,7 @@ public class LoginServlet extends HttpServlet {
 	        
 	        HttpSession session = request.getSession(true); // Crea una nueva sesión
 	        session.setAttribute("username", username);
+	        session.setAttribute("isAdmin", isAdmin); // Guardar si es admin en la sesión
 	        
 	        // Redirigir al perfil
 	        response.sendRedirect("PerfilServlet");
@@ -79,5 +83,4 @@ public class LoginServlet extends HttpServlet {
 	        request.getRequestDispatcher("login.jsp").forward(request, response);
 	    }
 	}
-
 }
