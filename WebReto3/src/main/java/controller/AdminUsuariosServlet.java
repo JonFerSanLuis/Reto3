@@ -83,7 +83,7 @@ public class AdminUsuariosServlet extends HttpServlet {
         }
         
         request.setAttribute("listaUsuarios", usuarios);
-        request.getRequestDispatcher("admin-usuarios.jsp").forward(request, response);
+        request.getRequestDispatcher("private/admin-usuarios.jsp").forward(request, response);
     }
     
     private void mostrarFormularioEdicion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -93,7 +93,7 @@ public class AdminUsuariosServlet extends HttpServlet {
             
             if (usuario != null) {
                 request.setAttribute("usuario", usuario);
-                request.getRequestDispatcher("admin-editar-usuario.jsp").forward(request, response);
+                request.getRequestDispatcher("private/admin-editar-usuario.jsp").forward(request, response);
             } else {
                 response.sendRedirect("AdminUsuarios");
             }
@@ -110,7 +110,7 @@ public class AdminUsuariosServlet extends HttpServlet {
             if (usuario != null) {
                 request.setAttribute("usuario", usuario);
                 // Por ahora redirigimos a la página de edición ya que no tenemos una página de detalles
-                request.getRequestDispatcher("admin-editar-usuario.jsp").forward(request, response);
+                request.getRequestDispatcher("private/admin-editar-usuario.jsp").forward(request, response);
             } else {
                 response.sendRedirect("AdminUsuarios");
             }
