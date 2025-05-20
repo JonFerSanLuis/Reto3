@@ -58,7 +58,7 @@
             </div>
             <%   if (username != null) { 
 			%>
-			        <a href="perfil.jsp" class="btn">Perfil</a>
+			        <a href="PerfilServlet" class="btn">Perfil</a>
 			<% 
 			    } else { 
 			%>

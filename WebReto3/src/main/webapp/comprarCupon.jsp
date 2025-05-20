@@ -61,7 +61,7 @@
             </div>
             <%   if (username != null) { 
 			%>
-			        <a href="perfil.jsp" class="btn">Perfil</a>
+			        <a href="PerfilServlet" class="btn">Perfil</a>
 			<% 
 			    } else { 
 			%>
@@ -147,10 +147,10 @@
             </div>
 			  <div id="payment-form" class="payment-form">
 			    <h2 class="form-title"><fmt:message key="cupon.infoPago" /></h2>
-			    <form action="/comprar" method="POST">
+			    <form action="getCupon" method="POST">
 			        <div class="form-group">
 			            <label for="nombre"><fmt:message key="cupon.nombreCompleto" /></label>
-			            <input type="text" id="nombre" name="nombre" placeholder="Nombre y apellidos" required>
+			            <input type="text" id="nombre" name="nombre" placeholder="Nombre de usuario" required>
 			        </div>
 			        <div class="form-group">
 			            <label for="email"><fmt:message key="cupon.email" /></label>
